@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, make_response, flash, request, redirect, render_template, url_for
+from flask import Flask, request
 from Get_yogiyo import *
 from flask_cors import CORS
 import json
@@ -36,10 +36,10 @@ def getReviews():
     return result
 
 
-@app.route('/Search')
+@app.route('/search')
 def Searchs():
 
-    Search = request.args.get("Search", "피자")
+    Search = request.args.get("keyword", "피자")
     page = request.args.get("page", "0")
     lat = request.args.get("latitude", "37.5347556106622")
     lng = request.args.get("longitude", "127.114906298514")
@@ -47,8 +47,8 @@ def Searchs():
     result = json.dumps(data, ensure_ascii=False)
     return result
 
-@app.route('/Find_Top')
-def Find_Top():
+@app.route('/popularMenu')
+def popularMenu():
 
     lat = request.args.get("latitude", "36.969655961906")
     lng = request.args.get("longitude", "127.244958777736")
