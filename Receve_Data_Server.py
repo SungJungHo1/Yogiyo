@@ -58,7 +58,6 @@ def popularMenu():
 
 @app.route('/translate')
 def translate():
-    
     from_lan = request.args.get("from", "ko")
     to = request.args.get("to", "th")
     text = request.args.get("text", "태국어 번역 테스트")
