@@ -1,7 +1,8 @@
 import requests
-# import json
 from datetime import datetime
+import googletrans
 
+translator = googletrans.Translator()
 
 def get_Yogiyo(category, lat, lng):
     header = {"x-apikey": 'iphoneap',
@@ -52,10 +53,14 @@ def Find_Top(lat, lng):
     Get_json = response.json()
     return Get_json
 
+def Google_translate(from_lan : str,to : str,text : str):
+    result = translator.translate(text,src= from_lan, dest=to)
+    return result.text
 
 if __name__ == "__main__":
-
+    str1 = "나는 한국인 입니다."
+    print(Google_translate('ko','en',str1))
     #  print(get_Yogiyo('1인분주문', 36.969655961906, 127.244958777736))
     # print(get_Menu(468686))
     # print(get_Review(468686))
-    print(Search_Category("치킨", 0, "36.969655961906", "127.244958777736"))
+    # print(Search_Category("치킨", 0, "36.969655961906", "127.244958777736"))
