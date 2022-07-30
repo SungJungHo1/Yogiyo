@@ -62,7 +62,8 @@ def translate():
     to = request.args.get("to", "th")
     text = request.args.get("text", "태국어 번역 테스트")
     data = Google_translate(from_lan,to,text)
-    return data
+    result = json.dumps(data, ensure_ascii=False)
+    return result
 
 if __name__ == '__main__':
 
