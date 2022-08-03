@@ -30,9 +30,22 @@ def getMenus():
 
 @app.route('/getReviews')
 def getReviews():
-    id = request.args.get("id", "468686")
-    data = get_Review(id)
+    id = request.args.get("id", "1048427")
+    count = request.args.get("count", "1000")
+    page = request.args.get("page", "1")
+    data = get_Review(id,count,page)
     result = json.dumps(data, ensure_ascii=False)
+    return result
+
+@app.route('/getItemReviews')
+def getR():
+    id = request.args.get("id", "1048427")
+    count = request.args.get("count", "1000")
+    page = request.args.get("page", "1")
+    menu_id = request.args.get("menu_id", "314259651")
+    data = getItemReviews(id,page,count,menu_id)
+    result = json.dumps(data, ensure_ascii=False)
+
     return result
 
 
