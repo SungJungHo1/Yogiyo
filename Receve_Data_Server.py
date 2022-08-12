@@ -85,6 +85,20 @@ def Profile():
     result = json.dumps(data, ensure_ascii=False)
     return result
 
+@app.route('/pushOrder',methods=['POST'])
+def pushOrder():
+    userId = request.args.get("userId", "66")
+    userName = request.args.get("userName", "66")
+    OrderData = json.loads(request.form['OrderData'])
+    cart = json.loads(request.form['cart'])
+    print(userId)
+    print(userName)
+    print(OrderData)
+    print(cart)
+    Push_Message(userId,userName,OrderData,cart)
+
+    return "Yes"
+
 if __name__ == '__main__':
 
     ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
