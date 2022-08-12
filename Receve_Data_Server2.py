@@ -91,10 +91,6 @@ def pushOrder():
     userName = request.args.get("userName", "66")
     OrderData = json.loads(request.form['OrderData'])
     cart = json.loads(request.form['cart'])
-    print(userId)
-    print(userName)
-    print(OrderData)
-    print(cart)
     Push_Message(userId,userName,OrderData,cart)
 
     return "Yes"
