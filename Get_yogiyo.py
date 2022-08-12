@@ -60,13 +60,22 @@ def Find_Top(lat, lng):
     Get_json = response.json()
     return Get_json
 
+def Find_User_Profile(UserId):
+    header = {"Authorization": "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="}
+
+    url = f"https://api.line.me/v2/bot/profile/{UserId}"
+    response = requests.get(url, headers=header)
+    Get_json = response.json()
+    return Get_json
+
 def Google_translate(from_lan : str,to : str,text : str):
 
     result = translator.translate(text,src= from_lan, dest=to)
     return result.text
 
 if __name__ == "__main__":
-     print(get_Yogiyo('1인분주문', 36.969655961906, 127.244958777736))
+    #  print(get_Yogiyo('1인분주문', 36.969655961906, 127.244958777736))
+    print(Find_User_Profile("Uad859360a7e2589c8c213b3b47fc27a2"))
     # print(get_Menu(468686))
     # print(get_Review(468686))
     # print(Search_Category("치킨", 0, "36.969655961906", "127.244958777736"))

@@ -78,6 +78,13 @@ def translate():
     result = json.dumps(data, ensure_ascii=False)
     return result
 
+@app.route('/profile')
+def Profile():
+    Id = request.args.get("id", "66")
+    data = Find_User_Profile(Id)
+    result = json.dumps(data, ensure_ascii=False)
+    return result
+
 if __name__ == '__main__':
 
     ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
