@@ -89,9 +89,10 @@ def Profile():
 def pushOrder():
     userId = request.args.get("userId", "66")
     userName = request.args.get("userName", "66")
+    delivery_fee = request.args.get("delivery_fee", "66")
     OrderData = json.loads(request.form['OrderData'])
     cart = json.loads(request.form['cart'])
-    Push_Message(userId,userName,OrderData,cart)
+    Push_Message(userId,userName,delivery_fee,OrderData,cart)
 
     return "Yes"
 

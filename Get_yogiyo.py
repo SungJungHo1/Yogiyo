@@ -76,20 +76,29 @@ def Google_translate(from_lan : str,to : str,text : str):
     result = translator.translate(text,src= from_lan, dest=to)
     return result.text
 
-def Push_Message(UserId,UserName,OrderData,cart):
+def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
     Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
     header = {
         "Authorization": Line_tokens,
         "Content-Type": "application/json"
     }
     text1 = f"주문자명: {UserName}\n주소 : {OrderData['address'] + ' ' + OrderData['addressDetail']}\n1층비밀번호 : {OrderData['firstFloorEntranceCode']}\n주문사항 : {OrderData['deliveryMessage']}\n전화번호 : {OrderData['phone']}"
-    text2 = ""
+    text2 = f"배달비 : {delivery_fee}"
+    options_fee = 0
+    totals = 0
     for idx,i in enumerate(cart):
         menu = i['menu']
-        if idx == 0:
-            text2 = text2 + f"음식점 이름 : {i['storeName']}\n메뉴명 : {menu['menu_name']}\n갯수 : {i['quantity']}\n개당가격 : {menu['price']}\n총가격 : {i['totalPrice']}"
+        if (len(i['options']) == 0):
+            text2 = text2 + f"\n\n음식점 이름 : {i['storeName']}\n메뉴명 : {menu['menu_name']}\n갯수 : {i['quantity']}\n메뉴당 가격 : {format(int(menu['price']), ',d')}\n총가격 : {format(int(i['totalPrice']), ',d')}"
+            totals = totals + i['totalPrice']
         else:
-            text2 = text2 + f"\n\n음식점 이름 : {i['storeName']}\n메뉴명 : {menu['menu_name']}\n갯수 : {i['quantity']}\n개당가격 : {menu['price']}\n총가격 : {i['totalPrice']}"
+            text3 = f"\n\n음식점 이름 : {i['storeName']}\n메뉴명 : {menu['menu_name']}"
+            totals = totals + i['totalPrice']
+            for x in i['options']:
+                text3 = text3 + f"\n\n옵션메뉴 : {x['optionName']}\n옵션명 : {x['subOptionName']}\n옵션가격 : {x['subOptionPrice']}"
+                options_fee = options_fee + x['subOptionPrice']
+            text3 = text3 + f"\n\n메뉴 갯수 : {i['quantity']}\n옵션 총 가격 : {format(options_fee, ',d')}\n메뉴당 가격 : {format(int(menu['price']), ',d')}\n총가격 : {format(int(i['totalPrice']), ',d')}"
+            text2 = text2 + text3
     datas = {
         "to": UserId,
         "messages":[
@@ -100,6 +109,235 @@ def Push_Message(UserId,UserName,OrderData,cart):
             {
                 "type":"text",
                 "text":text2
+            }
+        ]
+    }
+    url = f"https://api.line.me/v2/bot/message/push"
+    response = requests.post(url, headers=header,data= json.dumps(datas))
+    template_Test(int(totals),int(delivery_fee))
+    Get_json = response.json()
+    return Get_json
+
+def template_Test(Total_pay, deliver_fee):
+    Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
+    Total_Count = Total_pay + deliver_fee + 3000
+    header = {
+        "Authorization": Line_tokens,
+        "Content-Type": "application/json"
+    }
+    datas = {
+        "to": "Uad859360a7e2589c8c213b3b47fc27a2",
+        "messages":[
+            {
+                "type": "flex",
+                "altText": "주문이 완료되었습니다!",
+                "contents": {############### 시작
+                     "type": "bubble",
+                        "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                            {
+                                "type": "text",
+                                "text": "fastfood",
+                                "weight": "bold",
+                                "color": "#000000",
+                                "size": "sm"
+                            },
+                            {
+                                "type": "text",
+                                "text": "주문금액",
+                                "weight": "bold",
+                                "size": "xxl",
+                                "margin": "md",
+                                "color": "#1DB446"
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "xxl"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "margin": "xxl",
+                                "spacing": "sm",
+                                "contents": [
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "총 가격",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": format(Total_pay, ',d')  + ' ￦',
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "배송비",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": format(deliver_fee, ',d')  + ' ￦',
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "서비스요금",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "3,000 ￦",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "separator",
+                                    "margin": "xxl"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "총 금액"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": format(Total_Count, ',d') + ' ￦',
+                                        "align": "end"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "separator"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "margin": "xxl",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "계좌번호",
+                                        "size": "sm",
+                                        "color": "#037bfc"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1000-10120-2130921",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "은행명",
+                                        "size": "sm",
+                                        "color": "#037bfc"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "우리은행",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "예금주",
+                                        "size": "sm",
+                                        "color": "#037bfc"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "홍길동",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                    ]
+                                }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "xxl"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "md",
+                                "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "주문번호",
+                                    "size": "xs",
+                                    "color": "#aaaaaa",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "#743289384279",
+                                    "color": "#aaaaaa",
+                                    "size": "xs",
+                                    "align": "end"
+                                }
+                                ]
+                            }
+                            ]
+                        },
+                        "styles": {
+                            "footer": {
+                            "separator": True
+                            }
+                        }
+                }############### 끝
+
             }
         ]
     }
@@ -142,8 +380,141 @@ if __name__ == "__main__":
                 'storeName': '더진국-가락점'
             }
         ]
-    data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',orderdata,cart)
+    cart2 = [
+  {
+    'menu': {
+      'menu_name': '레전드 고기만 500g',
+      'menuId': '314436161',
+      'price': '16800'
+    },
+    'options': [
+      {
+        'optionName': '고기 선택',
+        'subOptionName': '칼집장인 숙성 꽃삼겹 500g',
+        'subOptionPrice': 2000
+      },
+      {
+        'optionName': '고기 선택',
+        'subOptionName': '특제소스 양념갈비 400g',
+        'subOptionPrice': 2000
+      },
+      {
+        'optionName': '고기 선택',
+        'subOptionName': '고소한 숙성 우삼겹 400g',
+        'subOptionPrice': 2000
+      },
+      {
+        'optionName': '고기 선택',
+        'subOptionName': '프리미엄 소  고기 스테이크 400g',
+        'subOptionPrice': 4000
+      },
+      {
+        'optionName': '고기 선택',
+        'subOptionName': '숙성 프리미엄 삼겹 500g',
+        'subOptionPrice': 1500
+      },
+      {
+        'optionName': '고기 선택',
+        'subOptionName': '두툼한 목살구이 500g',
+        'subOptionPrice': 500
+      },
+      {
+        'optionName': '고기 선택',
+        'subOptionName': '숙성 프리미엄 삼겹 250g＋두툼한 목살구이 250g',
+        'subOptionPrice': 1500
+      },
+      {
+        'optionName': '고기 추가 선택',
+        'subOptionName': '숙성 프리미엄 삼겹 250g＋두툼한 목살구이 250g 추가',
+        'subOptionPrice': 10500
+      },
+      {
+        'optionName': '고기 추가 선택',
+        'subOptionName': '숙성 프리미엄 삼겹 500g 추가',
+        'subOptionPrice': 10500
+      },
+      {
+        'optionName': '고기 추가 선택',
+        'subOptionName': '칼집장인 숙성 꽃삼겹 500g 추가',
+        'subOptionPrice': 11000
+      },
+      {
+        'optionName': '고기 추가 선택',
+        'subOptionName': '두툼한 목살구이 500g 추가',
+        'subOptionPrice': 9000
+      },
+      {
+        'optionName': '고기 추가 선택',
+        'subOptionName': '특제소스 양념갈비 400g 추가',
+        'subOptionPrice': 10000
+      },
+      {
+        'optionName': '고기 추가 선택',
+        'subOptionName': '고소한 숙성 우삼겹 400g 추가',
+        'subOptionPrice': 11000
+      },
+      {
+        'optionName': '고기 추가 선택',
+        'subOptionName': '프리미엄 소고기 스테이크 400g 추가',
+        'subOptionPrice': 13000
+      },
+      {
+        'optionName': '반찬 추가 선택',
+        'subOptionName': '레전드 매운 물냉면 추가',
+        'subOptionPrice': 8600
+      },
+      {
+        'optionName': '반찬 추가 선택',
+        'subOptionName': '레전드 매운 비빔냉면 추가',
+        'subOptionPrice': 8600
+      },
+      {
+        'optionName': '반찬 추가 선택',
+        'subOptionName': '레전드 물냉면 추가',
+        'subOptionPrice': 8000
+      },
+      {
+        'optionName': '반찬 추가 선택',
+        'subOptionName': '레전드 비빔냉면 추가',
+        'subOptionPrice': 8000
+      },
+      {
+        'optionName': '반찬 추가 선택',
+        'subOptionName': '모짜렐라 콘치즈 추가',
+        'subOptionPrice': 3000
+      },
+      {
+        'optionName': '반찬 추가 선택',
+        'subOptionName': '살얼음 동동 묵사발 추가',
+        'subOptionPrice': 4000
+      },
+      {
+        'optionName': '반찬 추가 선택',
+        'subOptionName': '품질좋은육 회 한접시 추가',
+        'subOptionPrice': 4000
+      },
+      {
+        'optionName': '반찬 추가 선택',
+        'subOptionName': '매콤달달 떡볶이 추가',
+        'subOptionPrice': 4000
+      },
+      {
+        'optionName': '반찬 추가 선택',
+        'subOptionName': '매콤달달 떡볶이＋모짜렐라치즈 추  가',
+        'subOptionPrice': 5000
+      }
+    ],
+    'quantity': 1,
+    'totalPrice': 158500,
+    'basePrice': 158500,
+    'storeId': '1049420',
+    'storeName': '레전드고기한상-암사점'
+  }
+]
+    delivery_fee = 3000
+    data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',delivery_fee,orderdata,cart2)
     print(data)
+    # print(template_Test(10000,3000))
     # print(get_Menu(468686))
     # print(get_Review(468686))
     # print(Search_Category("치킨", 0, "36.969655961906", "127.244958777736"))
