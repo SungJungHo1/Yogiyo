@@ -114,11 +114,11 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
     }
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header,data= json.dumps(datas))
-    template_Test(int(totals),int(delivery_fee))
+    template_Test(UserId,int(totals),int(delivery_fee))
     Get_json = response.json()
     return Get_json
 
-def template_Test(Total_pay, deliver_fee):
+def template_Test(userId,Total_pay, deliver_fee):
     Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
     Total_Count = Total_pay + deliver_fee + 3000
     header = {
@@ -126,7 +126,7 @@ def template_Test(Total_pay, deliver_fee):
         "Content-Type": "application/json"
     }
     datas = {
-        "to": "Uad859360a7e2589c8c213b3b47fc27a2",
+        "to": userId,
         "messages":[
             {
                 "type": "flex",
