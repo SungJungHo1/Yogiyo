@@ -105,7 +105,8 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                     "text": menu['menu_name'],
                     "size": "sm",
                     "color": "#111111",
-                    "align": "end"
+                    "align": "end",
+                    "wrap": True
                 }
                 ]
             },
@@ -184,7 +185,8 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                     "text": menu['menu_name'],
                     "size": "sm",
                     "color": "#111111",
-                    "align": "end"
+                    "align": "end",
+                    "wrap": True
                 }
                 ]
             },
@@ -267,7 +269,8 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                         "text": x['optionName'],
                         "align": "end",
                         "size": "sm",
-                        "color": "#111111"
+                        "color": "#111111",
+                        "wrap": True
                     }
                     ]
                 },
@@ -369,7 +372,8 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                                         "text": UserName,
                                         "size": "sm",
                                         "color": "#111111",
-                                        "align": "end"
+                                        "align": "end",
+                                        "wrap": True
                                     }
                                     ],
                                     "margin": "xxl"
@@ -389,7 +393,8 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                                         "text": OrderData['address'] + ' ' + OrderData['addressDetail'],
                                         "size": "sm",
                                         "color": "#111111",
-                                        "align": "end"
+                                        "align": "end",
+                                        "wrap": True
                                     }
                                     ]
                                 },
@@ -408,7 +413,8 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                                         "text": OrderData['firstFloorEntranceCode'],
                                         "size": "sm",
                                         "color": "#111111",
-                                        "align": "end"
+                                        "align": "end",
+                                        "wrap": True
                                     }
                                     ]
                                 },
@@ -427,7 +433,8 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                                         "text": OrderData['deliveryMessage'],
                                         "size": "sm",
                                         "color": "#111111",
-                                        "align": "end"
+                                        "align": "end",
+                                        "wrap": True
                                     }
                                     ]
                                 },
@@ -446,7 +453,8 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                                         "text": OrderData['phone'],
                                         "size": "sm",
                                         "color": "#111111",
-                                        "align": "end"
+                                        "align": "end",
+                                        "wrap": True
                                     }
                                     ]
                                 }
@@ -521,7 +529,8 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                                 "align": "center",
                                 "gravity": "center",
                                 "margin": "lg",
-                                "weight": "bold"
+                                "weight": "bold",
+                                "wrap": True
                             },
                             {
                                 "type": "box",
