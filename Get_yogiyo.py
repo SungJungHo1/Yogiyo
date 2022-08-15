@@ -652,7 +652,7 @@ def template_Test(userId,Total_pay, deliver_fee):
                             "contents": [
                             {
                                 "type": "text",
-                                "text": "fastfood",
+                                "text": "FASTFOOD",
                                 "weight": "bold",
                                 "color": "#000000",
                                 "size": "sm"
@@ -691,7 +691,7 @@ def template_Test(userId,Total_pay, deliver_fee):
                                         "text": format(Total_pay, ',d')  + ' ￦',
                                         "size": "sm",
                                         "color": "#111111",
-                                        "align": "end"
+                                        "align": "end",
                                     }
                                     ]
                                 },
@@ -745,12 +745,15 @@ def template_Test(userId,Total_pay, deliver_fee):
                                     "contents": [
                                     {
                                         "type": "text",
-                                        "text": "총 금액"
+                                        "text": "총 금액",
+                                        "weight": "bold"
                                     },
                                     {
                                         "type": "text",
-                                        "text": format(Total_Count, ',d') + ' ￦',
-                                        "align": "end"
+                                        "text": '￦ ' + format(Total_Count, ',d'),
+                                        "align": "end",
+                                        "weight": "bold",
+                                        "color": "#1DB446"
                                     }
                                     ]
                                 },
@@ -766,13 +769,13 @@ def template_Test(userId,Total_pay, deliver_fee):
                                         "type": "text",
                                         "text": "계좌번호",
                                         "size": "sm",
-                                        "color": "#037bfc"
+                                        "color": "#111111"
                                     },
                                     {
                                         "type": "text",
                                         "text": "1000-10120-2130921",
                                         "size": "sm",
-                                        "color": "#111111",
+                                        "color": "#037bfc",
                                         "align": "end"
                                     }
                                     ]
@@ -785,13 +788,13 @@ def template_Test(userId,Total_pay, deliver_fee):
                                         "type": "text",
                                         "text": "은행명",
                                         "size": "sm",
-                                        "color": "#037bfc"
+                                        "color": "#111111"
                                     },
                                     {
                                         "type": "text",
                                         "text": "우리은행",
                                         "size": "sm",
-                                        "color": "#111111",
+                                        "color": "#037bfc",
                                         "align": "end"
                                     }
                                     ]
@@ -804,13 +807,13 @@ def template_Test(userId,Total_pay, deliver_fee):
                                         "type": "text",
                                         "text": "예금주",
                                         "size": "sm",
-                                        "color": "#037bfc"
+                                        "color": "#111111"
                                     },
                                     {
                                         "type": "text",
                                         "text": "홍길동",
                                         "size": "sm",
-                                        "color": "#111111",
+                                        "color": "#037bfc",
                                         "align": "end"
                                     }
                                     ]
