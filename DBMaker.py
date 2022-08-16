@@ -12,7 +12,7 @@ mycol = mydb['OrderDatas']
 
 def Insert_Data(UserName,UserId,Delivery_Fee,Order_Data,Cart):
     z = randrange(0,900)
-    Order_Code = str(datetime.now().hour) + str(datetime.now().month) + str(datetime.now().year) + str(int(datetime.now().microsecond / 1000)) + str(z)[-1]
+    Order_Code = str(datetime.now().hour) + str(datetime.now().month) + str(datetime.now().year) + str(datetime.now().day) + str(int(datetime.now().microsecond / 1000)) + str(z)[-1]
     mycol.insert_one({"Order_Code":Order_Code,"UserName":UserName, "UserId":UserId,"delivery_fee":Delivery_Fee,"Order_Data":Order_Data,"Cart":Cart})
     return Order_Code
 
