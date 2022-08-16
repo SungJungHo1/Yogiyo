@@ -1,5 +1,5 @@
 from flask import Flask, request
-from Get_yogiyo2 import *
+from Get_yogiyo import *
 from flask_cors import CORS
 import json
 import ssl
