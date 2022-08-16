@@ -328,141 +328,31 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                 "type": "flex",
                 "altText": "주문정보",
                 "contents": {
-                    "type": "carousel",
-                    "contents": [
-                    {######flax1
-                            "type": "bubble",
-                            "body": {
+                        "type": "bubble",
+                        "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                            {
+                                "type": "text",
+                                "text": "FastFood",
+                                "weight": "bold",
+                                "color": "#1DB446",
+                                "size": "sm"
+                            },
+                            {
+                                "type": "text",
+                                "text": "고객정보",
+                                "weight": "bold",
+                                "size": "xxl",
+                                "margin": "md"
+                            },
+                            {
                                 "type": "box",
                                 "layout": "vertical",
+                                "margin": "xxl",
+                                "spacing": "sm",
                                 "contents": [
-                                {
-                                    "type": "text",
-                                    "text": "FastFood",
-                                    "weight": "bold",
-                                    "color": "#1DB446",
-                                    "size": "sm"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "고객정보",
-                                    "weight": "bold",
-                                    "size": "xxl",
-                                    "margin": "md"
-                                },
-                                {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "margin": "xxl",
-                                    "spacing": "sm",
-                                    "contents": [
-                                    {
-                                        "type": "separator",
-                                        "margin": "xxl"
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "주문자명",
-                                            "size": "sm",
-                                            "color": "#555555"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": UserName,
-                                            "size": "sm",
-                                            "color": "#111111",
-                                            "align": "end",
-                                            "wrap": True
-                                        }
-                                        ],
-                                        "margin": "xxl"
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "주소",
-                                            "size": "sm",
-                                            "color": "#555555"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": OrderData['address'] + ' ' + OrderData['addressDetail'],
-                                            "size": "sm",
-                                            "color": "#111111",
-                                            "align": "end",
-                                            "wrap": True
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "1층 비밀번호",
-                                            "size": "sm",
-                                            "color": "#555555"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": OrderData['firstFloorEntranceCode'],
-                                            "size": "sm",
-                                            "color": "#111111",
-                                            "align": "end",
-                                            "wrap": True
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "주문사항",
-                                            "size": "sm",
-                                            "color": "#555555"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": OrderData['deliveryMessage'],
-                                            "size": "sm",
-                                            "color": "#111111",
-                                            "align": "end",
-                                            "wrap": True
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "전화번호",
-                                            "size": "sm",
-                                            "color": "#555555"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": OrderData['phone'],
-                                            "size": "sm",
-                                            "color": "#111111",
-                                            "align": "end",
-                                            "wrap": True
-                                        }
-                                        ]
-                                    }
-                                    ]
-                                },
                                 {
                                     "type": "separator",
                                     "margin": "xxl"
@@ -470,168 +360,278 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                                 {
                                     "type": "box",
                                     "layout": "horizontal",
-                                    "margin": "md",
                                     "contents": [
                                     {
                                         "type": "text",
-                                        "text": "주문번호",
-                                        "size": "xs",
-                                        "color": "#aaaaaa",
-                                        "flex": 0
+                                        "text": "주문자명",
+                                        "size": "sm",
+                                        "color": "#555555"
                                     },
                                     {
                                         "type": "text",
-                                        "text": "#743289384279",
-                                        "color": "#aaaaaa",
-                                        "size": "xs",
-                                        "align": "end"
+                                        "text": UserName,
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end",
+                                        "wrap": True
+                                    }
+                                    ],
+                                    "margin": "xxl"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "주소",
+                                        "size": "sm",
+                                        "color": "#555555"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": OrderData['address'] + ' ' + OrderData['addressDetail'],
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end",
+                                        "wrap": True
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "1층 비밀번호",
+                                        "size": "sm",
+                                        "color": "#555555"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": OrderData['firstFloorEntranceCode'],
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end",
+                                        "wrap": True
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "주문사항",
+                                        "size": "sm",
+                                        "color": "#555555"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": OrderData['deliveryMessage'],
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end",
+                                        "wrap": True
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "전화번호",
+                                        "size": "sm",
+                                        "color": "#555555"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": OrderData['phone'],
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end",
+                                        "wrap": True
                                     }
                                     ]
                                 }
                                 ]
                             },
-                            "styles": {
-                                "footer": {
-                                "separator": True
+                            {
+                                "type": "separator",
+                                "margin": "xxl"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "md",
+                                "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "주문번호",
+                                    "size": "xs",
+                                    "color": "#aaaaaa",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "#743289384279",
+                                    "color": "#aaaaaa",
+                                    "size": "xs",
+                                    "align": "end"
+                                }
+                                ]
+                            }
+                            ]
+                        },
+                        "styles": {
+                            "footer": {
+                            "separator": True
+                        }
+                    }
+                },
+            },
+            {
+                "type": "flex",
+                "altText": "주문정보",
+                "contents":
+                {
+                    "type": "bubble",
+                    "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                            {
+                                "type": "text",
+                                "text": "FastFood",
+                                "weight": "bold",
+                                "color": "#1DB446",
+                                "size": "sm"
+                            },
+                            {
+                                "type": "text",
+                                "text": "주문정보",
+                                "weight": "bold",
+                                "size": "xxl",
+                                "margin": "md"
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "none"
+                            },
+                            {
+                                "type": "text",
+                                "text": cart[0]['storeName'],
+                                "size": "md",
+                                "align": "center",
+                                "gravity": "center",
+                                "margin": "lg",
+                                "weight": "bold",
+                                "wrap": True
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "sm",
+                                "contents": [
+                                {
+                                    "type": "separator",
+                                    "margin": "lg"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "spacing": "sm",
+                                    "contents":Menu_Data},########################메뉴명
+                                {
+                                    "type": "separator"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "옵션가격",
+                                        "color": "#555555",
+                                        "size": "sm"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": format(options_fee, ',d') + ' ￦',
+                                        "align": "end",
+                                        "color": "#111111",
+                                        "size": "sm"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "총 가격",
+                                        "color": "#555555",
+                                        "size": "sm"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": format(totals, ',d') + ' ￦',
+                                        "align": "end",
+                                        "color": "#111111",
+                                        "size": "sm"
+                                    }
+                                    ]
+                                }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "xxl"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "md",
+                                "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "주문번호",
+                                    "size": "xs",
+                                    "color": "#aaaaaa",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "#743289384279",
+                                    "color": "#aaaaaa",
+                                    "size": "xs",
+                                    "align": "end"
+                                }
+                                ]
+                            }
+                            ]
+                        },
+                        "styles": {
+                            "footer": {
+                            "separator": True
                             }
                         }
-                    },######flax1
-                    {#######flax2
-                            "type": "bubble",
-                            "body": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                {
-                                    "type": "text",
-                                    "text": "FastFood",
-                                    "weight": "bold",
-                                    "color": "#1DB446",
-                                    "size": "sm"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "주문정보",
-                                    "weight": "bold",
-                                    "size": "xxl",
-                                    "margin": "md"
-                                },
-                                {
-                                    "type": "separator",
-                                    "margin": "none"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": cart[0]['storeName'],
-                                    "size": "md",
-                                    "align": "center",
-                                    "gravity": "center",
-                                    "margin": "lg",
-                                    "weight": "bold",
-                                    "wrap": True
-                                },
-                                {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "spacing": "sm",
-                                    "contents": [
-                                    {
-                                        "type": "separator",
-                                        "margin": "lg"
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "vertical",
-                                        "spacing": "sm",
-                                        "contents":Menu_Data},########################메뉴명
-                                    {
-                                        "type": "separator"
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "옵션가격",
-                                            "color": "#555555",
-                                            "size": "sm"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": format(options_fee, ',d') + ' ￦',
-                                            "align": "end",
-                                            "color": "#111111",
-                                            "size": "sm"
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "총 가격",
-                                            "color": "#555555",
-                                            "size": "sm"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": format(totals, ',d') + ' ￦',
-                                            "align": "end",
-                                            "color": "#111111",
-                                            "size": "sm"
-                                        }
-                                        ]
-                                    }
-                                    ]
-                                },
-                                {
-                                    "type": "separator",
-                                    "margin": "xxl"
-                                },
-                                {
-                                    "type": "box",
-                                    "layout": "horizontal",
-                                    "margin": "md",
-                                    "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "주문번호",
-                                        "size": "xs",
-                                        "color": "#aaaaaa",
-                                        "flex": 0
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": "#743289384279",
-                                        "color": "#aaaaaa",
-                                        "size": "xs",
-                                        "align": "end"
-                                    }
-                                    ]
-                                }
-                                ]
-                            },
-                            "styles": {
-                                "footer": {
-                                "separator": True
-                                }
-                            }
-                        }############flax2
-                    ]
                     }
             }
         ]
     }
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header,data= json.dumps(datas))
-    template_Test(UserId,UserName,int(totals),int(delivery_fee))
+    template_Test(UserId,int(totals),int(delivery_fee))
     Get_json = response.json()
     return Get_json
 
-def template_Test(userId,UserName,Total_pay, deliver_fee):
+def template_Test(userId,Total_pay, deliver_fee):
     Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
     Total_Count = Total_pay + deliver_fee + 3000
     header = {
@@ -644,182 +644,94 @@ def template_Test(userId,UserName,Total_pay, deliver_fee):
             {
                 "type": "flex",
                 "altText": "주문이 완료되었습니다!",
-                "contents": {
-                    "type": "carousel",
-                    "contents": [
-                    {############### 시작
-                        "type": "bubble",
-                            "body": {
+                "contents": {############### 시작
+                     "type": "bubble",
+                        "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                            {
+                                "type": "text",
+                                "text": "FASTFOOD",
+                                "weight": "bold",
+                                "color": "#000000",
+                                "size": "sm"
+                            },
+                            {
+                                "type": "text",
+                                "text": "주문금액",
+                                "weight": "bold",
+                                "size": "xxl",
+                                "margin": "md",
+                                "color": "#1DB446"
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "xxl"
+                            },
+                            {
                                 "type": "box",
                                 "layout": "vertical",
+                                "margin": "xxl",
+                                "spacing": "sm",
                                 "contents": [
                                 {
-                                    "type": "text",
-                                    "text": "FASTFOOD",
-                                    "weight": "bold",
-                                    "color": "#000000",
-                                    "size": "sm"
-                                },
-                                {
-                                    "type": "text",
-                                    "text": "주문금액",
-                                    "weight": "bold",
-                                    "size": "xxl",
-                                    "margin": "md",
-                                    "color": "#1DB446"
-                                },
-                                {
-                                    "type": "separator",
-                                    "margin": "xxl"
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "총 가격",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": format(Total_pay, ',d')  + ' ￦',
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end",
+                                    }
+                                    ]
                                 },
                                 {
                                     "type": "box",
-                                    "layout": "vertical",
-                                    "margin": "xxl",
-                                    "spacing": "sm",
+                                    "layout": "horizontal",
                                     "contents": [
                                     {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "총 가격",
-                                            "size": "sm",
-                                            "color": "#555555",
-                                            "flex": 0
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": format(Total_pay, ',d')  + ' ￦',
-                                            "size": "sm",
-                                            "color": "#111111",
-                                            "align": "end",
-                                        }
-                                        ]
+                                        "type": "text",
+                                        "text": "배송비",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
                                     },
                                     {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "배송비",
-                                            "size": "sm",
-                                            "color": "#555555",
-                                            "flex": 0
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": format(deliver_fee, ',d')  + ' ￦',
-                                            "size": "sm",
-                                            "color": "#111111",
-                                            "align": "end"
-                                        }
-                                        ]
+                                        "type": "text",
+                                        "text": format(deliver_fee, ',d')  + ' ￦',
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "서비스요금",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
                                     },
                                     {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "서비스요금",
-                                            "size": "sm",
-                                            "color": "#555555",
-                                            "flex": 0
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": "3,000 ￦",
-                                            "size": "sm",
-                                            "color": "#111111",
-                                            "align": "end"
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "separator",
-                                        "margin": "xxl"
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "총 금액",
-                                            "weight": "bold"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": '￦ ' + format(Total_Count, ',d'),
-                                            "align": "end",
-                                            "weight": "bold",
-                                            "color": "#1DB446"
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "separator"
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "margin": "xxl",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "계좌번호",
-                                            "size": "sm",
-                                            "color": "#111111"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": "1000-10120-2130921",
-                                            "size": "sm",
-                                            "color": "#037bfc",
-                                            "align": "end"
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "은행명",
-                                            "size": "sm",
-                                            "color": "#111111"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": "우리은행",
-                                            "size": "sm",
-                                            "color": "#037bfc",
-                                            "align": "end"
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "예금주",
-                                            "size": "sm",
-                                            "color": "#111111"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": "홍길동",
-                                            "size": "sm",
-                                            "color": "#037bfc",
-                                            "align": "end"
-                                        }
-                                        ]
+                                        "type": "text",
+                                        "text": "3,000 ￦",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
                                     }
                                     ]
                                 },
@@ -830,52 +742,108 @@ def template_Test(userId,UserName,Total_pay, deliver_fee):
                                 {
                                     "type": "box",
                                     "layout": "horizontal",
-                                    "margin": "md",
                                     "contents": [
                                     {
                                         "type": "text",
-                                        "text": "주문번호",
-                                        "size": "xs",
-                                        "color": "#aaaaaa",
-                                        "flex": 0
+                                        "text": "총 금액",
+                                        "weight": "bold"
                                     },
                                     {
                                         "type": "text",
-                                        "text": "#743289384279",
-                                        "color": "#aaaaaa",
-                                        "size": "xs",
+                                        "text": '￦ ' + format(Total_Count, ',d'),
+                                        "align": "end",
+                                        "weight": "bold",
+                                        "color": "#1DB446"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "separator"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "margin": "xxl",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "계좌번호",
+                                        "size": "sm",
+                                        "color": "#111111"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1000-10120-2130921",
+                                        "size": "sm",
+                                        "color": "#037bfc",
+                                        "align": "end"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "은행명",
+                                        "size": "sm",
+                                        "color": "#111111"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "우리은행",
+                                        "size": "sm",
+                                        "color": "#037bfc",
+                                        "align": "end"
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "horizontal",
+                                    "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "예금주",
+                                        "size": "sm",
+                                        "color": "#111111"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "홍길동",
+                                        "size": "sm",
+                                        "color": "#037bfc",
                                         "align": "end"
                                     }
                                     ]
                                 }
                                 ]
                             },
-                            "styles": {
-                                "footer": {
-                                "separator": True
-                                }
-                            }
-                    },############### 끝
-                    {
-                        "type": "bubble",
-                        "body": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "maxHeight": "300px",
-                            "contents": [
                             {
-                                "type": "text",
-                                "text": "❤FASTFOOD❤",
-                                "wrap": True,
-                                "align": "center",
-                                "gravity": "center"
+                                "type": "separator",
+                                "margin": "xxl"
                             },
                             {
-                                "type": "text",
-                                "text": f"\n위 계좌번호로 입금 해주세요🙏🏻\n\n입금 확인후 {UserName}님 에게  음식 배달을 시작합니다🥰  \n\n🍝🍲🍤🦪🍙🎂🍕🍟🌮🥘🍰🍱🍣🥟🍜🍦🧁🍿🧋🌭🍔🌯",
-                                "wrap": True,
-                                "align": "center",
-                                "gravity": "center"
+                                "type": "box",
+                                "layout": "horizontal",
+                                "margin": "md",
+                                "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "주문번호",
+                                    "size": "xs",
+                                    "color": "#aaaaaa",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "#743289384279",
+                                    "color": "#aaaaaa",
+                                    "size": "xs",
+                                    "align": "end"
+                                }
+                                ]
                             }
                             ]
                         },
@@ -884,9 +852,7 @@ def template_Test(userId,UserName,Total_pay, deliver_fee):
                             "separator": True
                             }
                         }
-                    }
-                    ]
-                }
+                }############### 끝
 
             }
         ]
@@ -1068,7 +1034,7 @@ if __name__ == "__main__":
   }
 ]
     delivery_fee = 3000
-    data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',delivery_fee,orderdata,cart2)
+    data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',delivery_fee,orderdata,cart)
     print(data)
     # print(template_Test(10000,3000))
     # print(get_Menu(468686))
