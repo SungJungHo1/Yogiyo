@@ -13,8 +13,7 @@ mycol = mydb['OrderDatas']
 def Insert_Data(UserName,UserId,Delivery_Fee,Order_Data,Cart):
     z = randrange(0,900)
     Order_Code = str(datetime.now().hour) + str(datetime.now().microsecond) + str(z)[-1]
-    x = mycol.insert_one({"Order_Code":Order_Code,"UserName":UserName, "UserId":UserId,"delivery_fee":Delivery_Fee,"Order_Data":Order_Data,"Cart":Cart})
-    print(x.inserted_id)
+    mycol.insert_one({"Order_Code":Order_Code,"UserName":UserName, "UserId":UserId,"delivery_fee":Delivery_Fee,"Order_Data":Order_Data,"Cart":Cart})
     return Order_Code
 
 def Drop_Users():
