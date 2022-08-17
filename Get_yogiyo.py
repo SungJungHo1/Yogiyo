@@ -126,27 +126,27 @@ def template_Test(userId,UserName,Total_pay, deliver_fee,Order_Code):
     Get_json = response.json()
     return Get_json
 
-def IMG_Test(UserId,fileURL):
+def IMG_Test(UserId,file_Name):
     Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
 
     header = {
         "Authorization": Line_tokens,
-        
+        "Content-Type": "application/json"
+
     }
     datas = {
             "to": UserId,
             "messages":[
                 {
                     "type": "image",
-                    "originalContentUrl": "https://www.fastfood.p-e.kr/static/" + fileURL,
-                    "previewImageUrl": "https://www.fastfood.p-e.kr/static/" + fileURL,
+                    "originalContentUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
+                    "previewImageUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
                 }
             ]
         }
     
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header,data= json.dumps(datas))
-    # response2 = requests.post(url, headers=header,data= json.dumps(datas2))
     Get_json = response.json()
     print(Get_json)
     return Get_json
