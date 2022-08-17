@@ -3,6 +3,7 @@ from Get_yogiyo import *
 from flask_cors import CORS
 import json
 import ssl
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -94,6 +95,17 @@ def pushOrder():
     cart = json.loads(request.form['cart'])
     Push_Message(userId,userName,delivery_fee,OrderData,cart)
 
+    return "Yes"
+
+@app.route('/getIMG',methods=['POST'])
+def getIMG():
+
+    userId = request.args.get("userId", "66")
+    OrderData = request.files['file']
+    file_Name = secure_filename(OrderData.filename)
+    OrderData.save("./static/" + file_Name)
+    IMG_Test(userId, file_Name)
+    
     return "Yes"
 
 if __name__ == '__main__':

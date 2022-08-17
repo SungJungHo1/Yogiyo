@@ -126,8 +126,35 @@ def template_Test(userId,UserName,Total_pay, deliver_fee,Order_Code):
     Get_json = response.json()
     return Get_json
 
+def IMG_Test(UserId,fileURL):
+    Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
+
+    header = {
+        "Authorization": Line_tokens,
+        
+    }
+    datas = {
+            "to": UserId,
+            "messages":[
+                {
+                    "type": "image",
+                    "originalContentUrl": "https://www.fastfood.p-e.kr/static/" + fileURL,
+                    "previewImageUrl": "https://www.fastfood.p-e.kr/static/" + fileURL,
+                }
+            ]
+        }
+    
+    url = f"https://api.line.me/v2/bot/message/push"
+    response = requests.post(url, headers=header,data= json.dumps(datas))
+    # response2 = requests.post(url, headers=header,data= json.dumps(datas2))
+    Get_json = response.json()
+    print(Get_json)
+    return Get_json
+
+
 if __name__ == "__main__":
     
-    delivery_fee = 3000
-    data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',delivery_fee,orderdata,cart2)
-    print(data)
+    # delivery_fee = 3000
+    # data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',delivery_fee,orderdata,cart2)
+    # print(data)
+    IMG_Test("Uad859360a7e2589c8c213b3b47fc27a2")

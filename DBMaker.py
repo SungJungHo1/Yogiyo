@@ -22,6 +22,9 @@ def Drop_Users():
 if __name__ == "__main__":
     # Insert_Data("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',orderdata,cart)
     # Drop_Users()
+    # z = randrange(0,900)
+    # Order_Code = str(datetime.now().hour) + str(datetime.now().month) + str(datetime.now().year) + str(datetime.now().day) + str(int(datetime.now().microsecond / 1000)) + str(z)[-1]
+    # print(Order_Code)
     x = mycol.find()
     for i in x:
         print(i)
