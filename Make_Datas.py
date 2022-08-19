@@ -1,7 +1,16 @@
+import googletrans
+
+translator = googletrans.Translator()
+
 def Make_dics(get_List,lists):
     for i in lists:
         get_List.append(i)
     return get_List
+
+def Google_translate(to : str,text : str):
+
+    result = translator.translate(text, dest=to)
+    return result.text
 
 def Set_Options(x):
     datas = [{
@@ -16,7 +25,7 @@ def Set_Options(x):
                     },
                     {
                         "type": "text",
-                        "text": x['optionName'],
+                        "text": Google_translate("ko", x['optionName']),
                         "align": "end",
                         "size": "sm",
                         "color": "#111111",
@@ -36,7 +45,7 @@ def Set_Options(x):
                     },
                     {
                         "type": "text",
-                        "text": x['subOptionName'],
+                        "text": Google_translate("ko", x['subOptionName']),
                         "size": "sm",
                         "color": "#111111",
                         "align": "end",
@@ -677,3 +686,6 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
         ]
     }
     return datas
+
+if __name__ == "__main__":
+    print(Google_translate("ko", "test"))

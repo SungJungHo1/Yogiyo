@@ -1,12 +1,9 @@
 import requests
-import googletrans
 import json
 from Ordersdatas import *
 from Make_Datas import *
 from DBMaker import *
 from AccessToken import *
-
-translator = googletrans.Translator()
 
 def get_Yogiyo(category, lat, lng):
     header = {"x-apikey": 'iphoneap',
@@ -71,11 +68,6 @@ def Find_User_Profile(UserId):
     response = requests.get(url, headers=header)
     Get_json = response.json()
     return Get_json
-
-def Google_translate(from_lan : str,to : str,text : str):
-
-    result = translator.translate(text,src= from_lan, dest=to)
-    return result.text
 
 def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
     Line_tokens = f"Bearer {Access_Token}"
@@ -159,3 +151,4 @@ if __name__ == "__main__":
     data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',3000,orderdata,cart2)
     # print(data)
     # IMG_Test("Uad859360a7e2589c8c213b3b47fc27a2")
+    get_Menu()
