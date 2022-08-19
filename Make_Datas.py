@@ -25,7 +25,7 @@ def Set_Options(x):
                     },
                     {
                         "type": "text",
-                        "text": Google_translate("ko", x['optionName']),
+                        "text": x['optionName'],
                         "align": "end",
                         "size": "sm",
                         "color": "#111111",
@@ -45,7 +45,7 @@ def Set_Options(x):
                     },
                     {
                         "type": "text",
-                        "text": Google_translate("ko", x['subOptionName']),
+                        "text": x['subOptionName'],
                         "size": "sm",
                         "color": "#111111",
                         "align": "end",
@@ -688,4 +688,4 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
     return datas
 
 if __name__ == "__main__":
-    print(Google_translate("ko", "test"))
+    print("sd")
