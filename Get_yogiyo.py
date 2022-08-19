@@ -4,6 +4,7 @@ import json
 from Ordersdatas import *
 from Make_Datas import *
 from DBMaker import *
+from AccessToken import *
 
 translator = googletrans.Translator()
 
@@ -62,7 +63,7 @@ def Find_Top(lat, lng):
     return Get_json
 
 def Find_User_Profile(UserId):
-    Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
+    Line_tokens = f"Bearer {Access_Token}"
     header = {
             "Authorization": Line_tokens
         }
@@ -77,7 +78,7 @@ def Google_translate(from_lan : str,to : str,text : str):
     return result.text
 
 def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
-    Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
+    Line_tokens = f"Bearer {Access_Token}"
     header = {
         "Authorization": Line_tokens,
         "Content-Type": "application/json"
@@ -112,7 +113,7 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
     return Get_json
 
 def template_Test(userId,UserName,Total_pay, deliver_fee,Order_Code):
-    Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
+    Line_tokens = f"Bearer {Access_Token}"
     Total_Count = Total_pay + deliver_fee + 3000
     header = {
         "Authorization": Line_tokens,
@@ -127,7 +128,7 @@ def template_Test(userId,UserName,Total_pay, deliver_fee,Order_Code):
     return Get_json
 
 def IMG_Test(UserId,file_Name):
-    Line_tokens = "Bearer LPoD2xZWE8Yz/OiZvghUhnuVRWqijmXiziipqaGKLbr30u9nEYmn3gcXM+U41brU6fKNWFMEcEyAQi/KiDaHHLHB/CJBbRphNIJLAYgmNJ6R18csA3uCr/IlGOGNZZIOsHmjTgH2gF4wSSI5/NRROQdB04t89/1O/w1cDnyilFU="
+    Line_tokens = f"Bearer {Access_Token}"
 
     header = {
         "Authorization": Line_tokens,
