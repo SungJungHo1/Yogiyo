@@ -106,6 +106,7 @@ def getIMG():
     file_Name = secure_filename(OrderData.filename)
     OrderData.save("./static/" + file_Name)
     IMG_Test(userId, file_Name)
+    IMG_Test("Ud3e6fc3fb8d8b59735a1bf807f1474d5", file_Name)
     
     return "Yes"
 

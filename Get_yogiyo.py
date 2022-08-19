@@ -120,10 +120,10 @@ def template_Test(userId,UserName,Total_pay, deliver_fee,Order_Code):
         "Content-Type": "application/json"
     }
     datas = Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code)
-    # datas2 = Make_DD("U463768ddcf2ff2d90a492bb041f3cfff",Total_pay,deliver_fee,Total_Count,UserName)
+    datas2 = Make_DD("Ud3e6fc3fb8d8b59735a1bf807f1474d5",Total_pay,deliver_fee,Total_Count,UserName)
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header,data= json.dumps(datas))
-    # response2 = requests.post(url, headers=header,data= json.dumps(datas2))
+    response2 = requests.post(url, headers=header,data= json.dumps(datas2))
     Get_json = response.json()
     return Get_json
 
