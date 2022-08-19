@@ -106,9 +106,12 @@ def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
                 options_fee = options_fee + x['subOptionPrice']
 
     datas = Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,Order_Code)
+    datas2 = Make_OrderList("Ud3e6fc3fb8d8b59735a1bf807f1474d5",UserName,OrderData,cart,Menu_Data,options_fee,totals,Order_Code)
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header,data= json.dumps(datas))
+    response2 = requests.post(url, headers=header,data= json.dumps(datas2))
     template_Test(UserId,UserName,int(totals),int(delivery_fee),Order_Code)
+    template_Test("Ud3e6fc3fb8d8b59735a1bf807f1474d5",UserName,int(totals),int(delivery_fee),Order_Code)
     Get_json = response.json()
     return Get_json
 
@@ -120,10 +123,8 @@ def template_Test(userId,UserName,Total_pay, deliver_fee,Order_Code):
         "Content-Type": "application/json"
     }
     datas = Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code)
-    datas2 = Make_DD("Ud3e6fc3fb8d8b59735a1bf807f1474d5",Total_pay,deliver_fee,Total_Count,UserName)
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header,data= json.dumps(datas))
-    response2 = requests.post(url, headers=header,data= json.dumps(datas2))
     Get_json = response.json()
     return Get_json
 
@@ -155,6 +156,6 @@ def IMG_Test(UserId,file_Name):
 if __name__ == "__main__":
     
     # delivery_fee = 3000
-    # data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',delivery_fee,orderdata,cart2)
+    data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',3000,orderdata,cart2)
     # print(data)
-    IMG_Test("Uad859360a7e2589c8c213b3b47fc27a2")
+    # IMG_Test("Uad859360a7e2589c8c213b3b47fc27a2")
