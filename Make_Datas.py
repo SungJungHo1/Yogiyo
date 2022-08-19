@@ -91,25 +91,7 @@ def Set_Dics(menu,i):
                 }
                 ]
             },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                {
-                    "type": "text",
-                    "text": "ราคา",#가격
-                    "size": "sm",
-                    "color": "#555555"
-                },
-                {
-                    "type": "text",
-                    "text": format(int(menu['price']), ',d') + ' ￦',
-                    "size": "sm",
-                    "color": "#111111",
-                    "align": "end"
-                }
-                ]
-            },
+            
             {
                 "type": "box",
                 "layout": "horizontal",
@@ -123,6 +105,25 @@ def Set_Dics(menu,i):
                 {
                     "type": "text",
                     "text": str(i['quantity']) + "개",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "ราคา",#가격
+                    "size": "sm",
+                    "color": "#555555"
+                },
+                {
+                    "type": "text",
+                    "text": format(int(menu['price']), ',d') + ' ￦',
                     "size": "sm",
                     "color": "#111111",
                     "align": "end"
@@ -377,44 +378,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                     {
                                         "type": "separator"
                                     },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "ราคาที่เลือก",#옵션가격
-                                            "color": "#555555",
-                                            "size": "sm"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": format(options_fee, ',d') + ' ￦',
-                                            "align": "end",
-                                            "color": "#111111",
-                                            "size": "sm"
-                                        }
-                                        ]
-                                    },
-                                    {
-                                        "type": "box",
-                                        "layout": "horizontal",
-                                        "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "ราคารวม",#총 가격
-                                            "color": "#555555",
-                                            "size": "sm"
-                                        },
-                                        {
-                                            "type": "text",
-                                            "text": format(totals, ',d') + ' ￦',
-                                            "align": "end",
-                                            "color": "#111111",
-                                            "size": "sm"
-                                        }
-                                        ]
-                                    }
+                                    
                                     ]
                                 },
                                 {
@@ -615,7 +579,7 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                         },
                                         {
                                             "type": "text",
-                                            "text": "토스뱅크",
+                                            "text": "Toss",
                                             "size": "sm",
                                             "color": "#037bfc",
                                             "align": "end"
