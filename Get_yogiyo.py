@@ -149,7 +149,6 @@ def IMG_Test(UserId,file_Name):
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header,data= json.dumps(datas))
     Get_json = response.json()
-    print(Get_json)
     return Get_json
 
 
