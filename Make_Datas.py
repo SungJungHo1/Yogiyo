@@ -10,7 +10,7 @@ def Set_Options(x):
                     "contents": [
                     {
                         "type": "text",
-                        "text": "옵션메뉴",
+                        "text": "เมนูตัวเลือก",#옵션메뉴
                         "size": "sm",
                         "color": "#1DB446"
                     },
@@ -30,7 +30,7 @@ def Set_Options(x):
                     "contents": [
                     {
                         "type": "text",
-                        "text": "옵션명",
+                        "text": "ชื่อเมนูที่เลือก",#옵션명
                         "size": "sm",
                         "color": "#1DB446"
                     },
@@ -50,7 +50,7 @@ def Set_Options(x):
                     "contents": [
                     {
                         "type": "text",
-                        "text": "가격",
+                        "text": "ราคาที่เลือก",#옵션가격
                         "size": "sm",
                         "color": "#1DB446"
                     },
@@ -77,7 +77,7 @@ def Set_Dics(menu,i):
                 "contents": [
                 {
                     "type": "text",
-                    "text": "음식이름",
+                    "text": "ชื่ออาหาร",#음식이름 
                     "size": "sm",
                     "color": "#555555"
                 },
@@ -97,7 +97,7 @@ def Set_Dics(menu,i):
                 "contents": [
                 {
                     "type": "text",
-                    "text": "가격",
+                    "text": "ราคา",#가격
                     "size": "sm",
                     "color": "#555555"
                 },
@@ -116,7 +116,7 @@ def Set_Dics(menu,i):
                 "contents": [
                 {
                     "type": "text",
-                    "text": "갯수",
+                    "text": "ปริมาณ",#수량
                     "size": "sm",
                     "color": "#555555"
                 },
@@ -135,7 +135,7 @@ def Set_Dics(menu,i):
                 "contents": [
                 {
                     "type": "text",
-                    "text": "총 가격",
+                    "text": "ราคารวม",#총가격
                     "size": "sm",
                     "color": "#555555"
                 },
@@ -156,7 +156,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
         "messages":[
             {
                 "type": "flex",
-                "altText": "주문정보",
+                "altText": "ข้อมูลการสั่งซื้อ",#주문정보
                 "contents": {
                     "type": "carousel",
                     "contents": [
@@ -175,7 +175,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                 },
                                 {
                                     "type": "text",
-                                    "text": "고객정보",
+                                    "text": "ข้อมูลลูกค้า",#고객정보
                                     "weight": "bold",
                                     "size": "xxl",
                                     "margin": "md"
@@ -196,7 +196,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "주문자명",
+                                            "text": "ชื่อผู้สั่งซื้อ",#주문자명
                                             "size": "sm",
                                             "color": "#555555"
                                         },
@@ -217,7 +217,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "주소",
+                                            "text": "ที่อยู่",#주소
                                             "size": "sm",
                                             "color": "#555555"
                                         },
@@ -237,7 +237,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "1층 비밀번호",
+                                            "text": "รหัสผ่านชั้น 1",
                                             "size": "sm",
                                             "color": "#555555"
                                         },
@@ -257,7 +257,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "주문사항",
+                                            "text": "รายละเอียดการสั่งซื้อ",#주문사항
                                             "size": "sm",
                                             "color": "#555555"
                                         },
@@ -277,7 +277,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "전화번호",
+                                            "text": "หมายเลขโทรศัพท์",#전화번호
                                             "size": "sm",
                                             "color": "#555555"
                                         },
@@ -304,7 +304,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                     "contents": [
                                     {
                                         "type": "text",
-                                        "text": "주문번호",
+                                        "text": "เลขที่ใบสั่งซื้อ",#주문번호
                                         "size": "xs",
                                         "color": "#aaaaaa",
                                         "flex": 0
@@ -341,7 +341,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                 },
                                 {
                                     "type": "text",
-                                    "text": "주문정보",
+                                    "text": "ข้อมูลการสั่งซื้อ",#주문정보
                                     "weight": "bold",
                                     "size": "xxl",
                                     "margin": "md"
@@ -383,7 +383,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "옵션가격",
+                                            "text": "ราคาที่เลือก",#옵션가격
                                             "color": "#555555",
                                             "size": "sm"
                                         },
@@ -402,7 +402,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "총 가격",
+                                            "text": "ราคารวม",#총 가격
                                             "color": "#555555",
                                             "size": "sm"
                                         },
@@ -428,7 +428,7 @@ def Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,O
                                     "contents": [
                                     {
                                         "type": "text",
-                                        "text": "주문번호",
+                                        "text": "เลขที่ใบสั่งซื้อ",#주문번호
                                         "size": "xs",
                                         "color": "#aaaaaa",
                                         "flex": 0
@@ -482,7 +482,7 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                 },
                                 {
                                     "type": "text",
-                                    "text": "주문금액",
+                                    "text": "ยอดเงินที่ต้องชำระ",#주문금액
                                     "weight": "bold",
                                     "size": "xxl",
                                     "margin": "md",
@@ -504,7 +504,7 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "총 가격",
+                                            "text": "ราคารวม",#총가격
                                             "size": "sm",
                                             "color": "#555555",
                                             "flex": 0
@@ -524,7 +524,7 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "배송비",
+                                            "text": "ค่าจัดส่ง",#배송비
                                             "size": "sm",
                                             "color": "#555555",
                                             "flex": 0
@@ -544,7 +544,7 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "서비스요금",
+                                            "text": "ค่าบริการ",#서비스요금
                                             "size": "sm",
                                             "color": "#555555",
                                             "flex": 0
@@ -568,7 +568,7 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "총 금액",
+                                            "text": "รวมจ่ายทั้งหมด",#총금액
                                             "weight": "bold"
                                         },
                                         {
@@ -590,13 +590,13 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "계좌번호",
+                                            "text": "เลขที่บัญชี",#계좌번호
                                             "size": "sm",
                                             "color": "#111111"
                                         },
                                         {
                                             "type": "text",
-                                            "text": "1000-10120-2130921",
+                                            "text": "1908-6570-1243",
                                             "size": "sm",
                                             "color": "#037bfc",
                                             "align": "end"
@@ -609,13 +609,13 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "은행명",
+                                            "text": "ธนาคาร",#은행명
                                             "size": "sm",
                                             "color": "#111111"
                                         },
                                         {
                                             "type": "text",
-                                            "text": "우리은행",
+                                            "text": "토스뱅크",
                                             "size": "sm",
                                             "color": "#037bfc",
                                             "align": "end"
@@ -628,13 +628,13 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                         "contents": [
                                         {
                                             "type": "text",
-                                            "text": "예금주",
+                                            "text": "ชื่อบัญชีเกาหลี",#예금주
                                             "size": "sm",
                                             "color": "#111111"
                                         },
                                         {
                                             "type": "text",
-                                            "text": "홍길동",
+                                            "text": "FASTFOOD",
                                             "size": "sm",
                                             "color": "#037bfc",
                                             "align": "end"
@@ -654,7 +654,7 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                                     "contents": [
                                     {
                                         "type": "text",
-                                        "text": "주문번호",
+                                        "text": "เลขที่ใบสั่งซื้อ",#주문코드
                                         "size": "xs",
                                         "color": "#aaaaaa",
                                         "flex": 0
@@ -692,7 +692,8 @@ def Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code):
                             },
                             {
                                 "type": "text",
-                                "text": f"\n위 계좌번호로 입금 해주세요🙏🏻\n\n입금 확인후 {UserName}님 에게  음식 배달을 시작합니다🥰  \n\n🍝🍲🍤🦪🍙🎂🍕🍟🌮🥘🍰🍱🍣🥟🍜🍦🧁🍿🧋🌭🍔🌯",
+                                #위 계좌번호로 입금 해주세요🙏🏻\n\n입금 확인후 {UserName}님 에게  음식 배달을 시작합니다
+                                "text": f"{UserName} กรุณาฝากเงินเข้าเลขที่บัญชี\nหลังจากยืนยันการชำระเงิน\nเราจะเริ่มจัดส่งอาหารไปยังคุณลูกค้าทันที🥰  \n\n🍝🍲🍤🦪🍙🎂🍕🍟🌮🥘🍰🍱🍣🥟🍜🍦🧁🍿🧋🌭🍔🌯",
                                 "wrap": True,
                                 "align": "center",
                                 "gravity": "center"
