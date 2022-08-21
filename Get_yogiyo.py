@@ -4,6 +4,7 @@ from Ordersdatas import *
 from Make_Datas import *
 from DBMaker import *
 from AccessToken import *
+import time
 
 
 def get_Yogiyo(category, lat, lng):
@@ -164,7 +165,8 @@ def IMG_Test(UserId, file_Name):
 
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header, data=json.dumps(datas))
-    response = requests.post(url, headers=header, data=json.dumps(datas2))
+    time.sleep(1)
+    response2 = requests.post(url, headers=header, data=json.dumps(datas2))
     Get_json = response.json()
     return Get_json
 
