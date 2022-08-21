@@ -11,7 +11,7 @@ app.config['JSON_AS_ASCII'] = False
 CORS(app)
 
 
-@app.route('/getStores')
+@app.route('/getStores', methods=['GET'])
 def getStores():
     category = request.args.get("category", "1인분주문")
     latitude = request.args.get("latitude", "37.5347556106622")
@@ -23,7 +23,7 @@ def getStores():
     return result
 
 
-@app.route('/getMenus')
+@app.route('/getMenus', methods=['GET'])
 def getMenus():
     id = request.args.get("id", "468686")
     data = get_Menu(id)
@@ -31,7 +31,7 @@ def getMenus():
     return result
 
 
-@app.route('/getReviews')
+@app.route('/getReviews', methods=['GET'])
 def getReviews():
     id = request.args.get("id", "1048427")
     count = request.args.get("count", "1000")
@@ -41,7 +41,7 @@ def getReviews():
     return result
 
 
-@app.route('/getItemReviews')
+@app.route('/getItemReviews', methods=['GET'])
 def getR():
     id = request.args.get("id", "1048427")
     count = request.args.get("count", "1000")
@@ -53,7 +53,7 @@ def getR():
     return result
 
 
-@app.route('/search')
+@app.route('/search', methods=['GET'])
 def Searchs():
 
     Search = request.args.get("keyword", "피자")
@@ -65,7 +65,7 @@ def Searchs():
     return result
 
 
-@app.route('/popularMenu')
+@app.route('/popularMenu', methods=['GET'])
 def popularMenu():
 
     lat = request.args.get("latitude", "36.969655961906")
@@ -75,7 +75,7 @@ def popularMenu():
     return result
 
 
-@app.route('/translate')
+@app.route('/translate', methods=['GET'])
 def translate():
     from_lan = request.args.get("from", "ko")
     to = request.args.get("to", "th")
@@ -85,7 +85,7 @@ def translate():
     return result
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET'])
 def Profile():
     Id = request.args.get("id", "66")
     data = Find_User_Profile(Id)
