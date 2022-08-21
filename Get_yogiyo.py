@@ -5,6 +5,7 @@ from Make_Datas import *
 from DBMaker import *
 from AccessToken import *
 
+
 def get_Yogiyo(category, lat, lng):
     header = {"x-apikey": 'iphoneap',
               "x-apisecret": 'fe5183cc3dea12bd0ce299cf110a75a2'}
@@ -24,7 +25,8 @@ def get_Menu(id):
     Get_json = response.json()
     return Get_json
 
-def getItemReviews(id,page,count,menu_id):
+
+def getItemReviews(id, page, count, menu_id):
     header = {"x-apikey": 'iphoneap',
               "x-apisecret": 'fe5183cc3dea12bd0ce299cf110a75a2'}
     url = f"https://www.yogiyo.co.kr/api/v1/reviews/{id}/?page={page}&count={count}&sort=time&type=&sort_order=desc&menu_id={menu_id}"
@@ -32,7 +34,8 @@ def getItemReviews(id,page,count,menu_id):
     Get_json = response.json()
     return Get_json
 
-def get_Review(id,count,page):
+
+def get_Review(id, count, page):
     header = {"x-apikey": 'iphoneap',
               "x-apisecret": 'fe5183cc3dea12bd0ce299cf110a75a2'}
     url = f"https://www.yogiyo.co.kr/api/v1/reviews/{id}/?count={count}&only_photo_review=false&page={page}&sort=time"
@@ -50,6 +53,7 @@ def Search_Category(Search, page, lat, lng):
     Get_json = response.json()
     return Get_json
 
+
 def Find_Top(lat, lng):
     header = {"x-apikey": 'iphoneap',
               "x-apisecret": 'fe5183cc3dea12bd0ce299cf110a75a2'}
@@ -59,68 +63,76 @@ def Find_Top(lat, lng):
     Get_json = response.json()
     return Get_json
 
+
 def Find_User_Profile(UserId):
     Line_tokens = f"Bearer {Access_Token}"
     header = {
-            "Authorization": Line_tokens
-        }
+        "Authorization": Line_tokens
+    }
     url = f"https://api.line.me/v2/bot/profile/{UserId}"
     response = requests.get(url, headers=header)
     Get_json = response.json()
     return Get_json
 
-def Push_Message(UserId,UserName,delivery_fee,OrderData,cart):
+
+def Push_Message(UserId, UserName, delivery_fee, OrderData, cart):
     Line_tokens = f"Bearer {Access_Token}"
     header = {
         "Authorization": Line_tokens,
         "Content-Type": "application/json"
     }
 
-    Order_Code = Insert_Data(UserName,UserId,delivery_fee,OrderData,cart)
+    Order_Code = Insert_Data(UserName, UserId, delivery_fee, OrderData, cart)
 
     options_fee = 0
     totals = 0
     Menu_Data = []
     for i in cart:
         menu = i['menu']
-        
+
         if (len(i['options']) == 0):
-            MDs = Set_Dics(menu,i)
-            Make_dics(Menu_Data,MDs)
+            MDs = Set_Dics(menu, i)
+            Make_dics(Menu_Data, MDs)
             totals = totals + i['totalPrice']
         else:
-            MDs = Set_Dics(menu,i)
-            Make_dics(Menu_Data,MDs)
+            MDs = Set_Dics(menu, i)
+            Make_dics(Menu_Data, MDs)
             totals = totals + i['totalPrice']
             for x in i['options']:
                 Option_Data = Set_Options(x)
-                Make_dics(Menu_Data,Option_Data)
+                Make_dics(Menu_Data, Option_Data)
                 options_fee = options_fee + x['subOptionPrice']
 
-    datas = Make_OrderList(UserId,UserName,OrderData,cart,Menu_Data,options_fee,totals,Order_Code)
-    datas2 = Make_OrderList("Ud3e6fc3fb8d8b59735a1bf807f1474d5",UserName,OrderData,cart,Menu_Data,options_fee,totals,Order_Code)
+    datas = Make_OrderList(UserId, UserName, OrderData,
+                           cart, Menu_Data, options_fee, totals, Order_Code)
+    datas2 = Make_OrderList("Ud3e6fc3fb8d8b59735a1bf807f1474d5", UserName,
+                            OrderData, cart, Menu_Data, options_fee, totals, Order_Code)
     url = f"https://api.line.me/v2/bot/message/push"
-    response = requests.post(url, headers=header,data= json.dumps(datas))
-    response2 = requests.post(url, headers=header,data= json.dumps(datas2))
-    template_Test(UserId,UserName,int(totals),int(delivery_fee),Order_Code)
-    template_Test("Ud3e6fc3fb8d8b59735a1bf807f1474d5",UserName,int(totals),int(delivery_fee),Order_Code)
+    response = requests.post(url, headers=header, data=json.dumps(datas))
+    response2 = requests.post(url, headers=header, data=json.dumps(datas2))
+    template_Test(UserId, UserName, int(totals), int(delivery_fee), Order_Code)
+    template_Test("Ud3e6fc3fb8d8b59735a1bf807f1474d5", UserName,
+                  int(totals), int(delivery_fee), Order_Code)
     Get_json = response.json()
     return Get_json
 
-def template_Test(userId,UserName,Total_pay, deliver_fee,Order_Code):
+
+def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code):
     Line_tokens = f"Bearer {Access_Token}"
     Total_Count = Total_pay + deliver_fee + 3000
     header = {
         "Authorization": Line_tokens,
         "Content-Type": "application/json"
     }
-    datas = Make_DD(userId,Total_pay,deliver_fee,Total_Count,UserName,Order_Code)
+    datas = Make_DD(userId, Total_pay, deliver_fee,
+                    Total_Count, UserName, Order_Code)
     url = f"https://api.line.me/v2/bot/message/push"
-    response = requests.post(url, headers=header,data= json.dumps(datas))
+    response = requests.post(url, headers=header, data=json.dumps(datas))
     Get_json = response.json()
     return Get_json
 
-def IMG_Test(UserId,file_Name):
+
+def IMG_Test(UserId, file_Name):
     Line_tokens = f"Bearer {Access_Token}"
 
     header = {
@@ -129,26 +141,39 @@ def IMG_Test(UserId,file_Name):
 
     }
     datas = {
-            "to": UserId,
-            "messages":[
-                {
-                    "type": "image",
-                    "originalContentUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
-                    "previewImageUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
-                }
-            ]
-        }
-    
+        "to": UserId,
+        "messages": [
+            {
+                "type": "image",
+                "originalContentUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
+                "previewImageUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
+            }
+        ]
+    }
+
+    datas2 = {
+        "to": "Ud3e6fc3fb8d8b59735a1bf807f1474d5",
+        "messages": [
+            {
+                "type": "image",
+                "originalContentUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
+                "previewImageUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
+            }
+        ]
+    }
+
     url = f"https://api.line.me/v2/bot/message/push"
-    response = requests.post(url, headers=header,data= json.dumps(datas))
+    response = requests.post(url, headers=header, data=json.dumps(datas))
+    response = requests.post(url, headers=header, data=json.dumps(datas2))
     Get_json = response.json()
     return Get_json
 
 
 if __name__ == "__main__":
-    
+
     # delivery_fee = 3000
-    data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",'크턱',3000,orderdata,cart2)
+    data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",
+                        '크턱', 3000, orderdata, cart2)
     # print(data)
     # IMG_Test("Uad859360a7e2589c8c213b3b47fc27a2")
     get_Menu()

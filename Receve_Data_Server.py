@@ -10,6 +10,7 @@ app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 CORS(app)
 
+
 @app.route('/getStores')
 def getStores():
     category = request.args.get("category", "1인분주문")
@@ -35,9 +36,10 @@ def getReviews():
     id = request.args.get("id", "1048427")
     count = request.args.get("count", "1000")
     page = request.args.get("page", "1")
-    data = get_Review(id,count,page)
+    data = get_Review(id, count, page)
     result = json.dumps(data, ensure_ascii=False)
     return result
+
 
 @app.route('/getItemReviews')
 def getR():
@@ -45,7 +47,7 @@ def getR():
     count = request.args.get("count", "1000")
     page = request.args.get("page", "1")
     menu_id = request.args.get("menu_id", "314259651")
-    data = getItemReviews(id,page,count,menu_id)
+    data = getItemReviews(id, page, count, menu_id)
     result = json.dumps(data, ensure_ascii=False)
 
     return result
@@ -62,6 +64,7 @@ def Searchs():
     result = json.dumps(data, ensure_ascii=False)
     return result
 
+
 @app.route('/popularMenu')
 def popularMenu():
 
@@ -71,14 +74,16 @@ def popularMenu():
     result = json.dumps(data, ensure_ascii=False)
     return result
 
+
 @app.route('/translate')
 def translate():
     from_lan = request.args.get("from", "ko")
     to = request.args.get("to", "th")
     text = request.args.get("text", "태국어 번역 테스트")
-    data = Google_translate(from_lan,to,text)
+    data = Google_translate(from_lan, to, text)
     result = json.dumps(data, ensure_ascii=False)
     return result
+
 
 @app.route('/profile')
 def Profile():
@@ -87,18 +92,20 @@ def Profile():
     result = json.dumps(data, ensure_ascii=False)
     return result
 
-@app.route('/pushOrder',methods=['POST'])
+
+@app.route('/pushOrder', methods=['POST'])
 def pushOrder():
     userId = request.args.get("userId", "66")
     userName = request.args.get("userName", "66")
     delivery_fee = request.args.get("delivery_fee", "66")
     OrderData = json.loads(request.form['OrderData'])
     cart = json.loads(request.form['cart'])
-    Push_Message(userId,userName,delivery_fee,OrderData,cart)
+    Push_Message(userId, userName, delivery_fee, OrderData, cart)
 
     return "Yes"
 
-@app.route('/getIMG',methods=['POST'])
+
+@app.route('/getIMG', methods=['POST'])
 def getIMG():
 
     userId = request.args.get("userId", "66")
@@ -106,12 +113,14 @@ def getIMG():
     file_Name = secure_filename(OrderData.filename)
     OrderData.save("./static/" + file_Name)
     IMG_Test(userId, file_Name)
-    IMG_Test("Ud3e6fc3fb8d8b59735a1bf807f1474d5", file_Name)
-    
+    # IMG_Test("Ud3e6fc3fb8d8b59735a1bf807f1474d5", file_Name)
+
     return "Yes"
+
 
 if __name__ == '__main__':
 
     ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
-    ssl_context.load_cert_chain(certfile='certificate.pem', keyfile='private.key')
+    ssl_context.load_cert_chain(
+        certfile='certificate.pem', keyfile='private.key')
     app.run(host="0.0.0.0", port=443, ssl_context=ssl_context)
