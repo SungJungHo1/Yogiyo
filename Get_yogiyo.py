@@ -156,9 +156,8 @@ def IMG_Test(UserId, file_Name):
         "to": "Ud3e6fc3fb8d8b59735a1bf807f1474d5",
         "messages": [
             {
-                "type": "image",
-                "originalContentUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
-                "previewImageUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
+                "type": "text",
+                "text": 'https://www.fastfood.p-e.kr/static/' + file_Name,
             }
         ]
     }
