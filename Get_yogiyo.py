@@ -156,15 +156,15 @@ def IMG_Test(UserId, file_Name):
         "to": "Ud3e6fc3fb8d8b59735a1bf807f1474d5",
         "messages": [
             {
-                "type": "text",
-                "text": 'https://www.fastfood.p-e.kr/static/' + file_Name,
+                "type": "image",
+                "originalContentUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
+                "previewImageUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
             }
         ]
     }
 
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header, data=json.dumps(datas))
-    time.sleep(1)
     response2 = requests.post(url, headers=header, data=json.dumps(datas2))
     Get_json = response.json()
     return Get_json
