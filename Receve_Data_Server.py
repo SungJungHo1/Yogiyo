@@ -3,6 +3,7 @@ from Get_yogiyo import *
 from flask_cors import CORS
 import json
 import ssl
+from DBMaker import *
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -96,7 +97,8 @@ def pushOrder():
 @app.route('/AddData', methods=['GET'])
 def AddData():
     Code = request.args.get("Code", "66")
-    print(Code)
+    Ad_Urls = request.args.get("Ad_Urls", "66")
+    Edit_Data(Code, Ad_Urls)
     return Code
 
 

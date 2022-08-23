@@ -19,6 +19,11 @@ def Insert_Data(UserName, UserId, Delivery_Fee, Order_Data, Cart):
     return Order_Code
 
 
+def Edit_Data(Code, Ur):
+    mycol.update_one({"Order_Code": str(Code)}, {
+                     '$set': {'Addres_Url': str(Ur)}})
+
+
 def Drop_Users():
     mycol.drop()
 
@@ -32,3 +37,4 @@ if __name__ == "__main__":
     x = mycol.find()
     for i in x:
         print(i)
+    # Edit_Data("1382022238380", "https://ibb.co/r22bKFs")
