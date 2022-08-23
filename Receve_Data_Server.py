@@ -96,7 +96,7 @@ def pushOrder():
 @app.route('/AddData', methods=['GET'])
 def AddData():
     Code = request.args.get("Code", "66")
-
+    print(Code)
     return Code
 
 
