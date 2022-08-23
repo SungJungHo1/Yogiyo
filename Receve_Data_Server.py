@@ -75,16 +75,6 @@ def popularMenu():
     return result
 
 
-@app.route('/translate', methods=['GET'])
-def translate():
-    from_lan = request.args.get("from", "ko")
-    to = request.args.get("to", "th")
-    text = request.args.get("text", "태국어 번역 테스트")
-    data = Google_translate(from_lan, to, text)
-    result = json.dumps(data, ensure_ascii=False)
-    return result
-
-
 @app.route('/profile', methods=['GET'])
 def Profile():
     Id = request.args.get("id", "66")
@@ -109,11 +99,9 @@ def pushOrder():
 def getIMG():
 
     userId = request.args.get("userId", "66")
-    OrderData = request.files['file']
-    file_Name = secure_filename(OrderData.filename)
-    OrderData.save("./static/" + file_Name)
-    IMG_Test(userId, file_Name)
-    # IMG_Test("Ud3e6fc3fb8d8b59735a1bf807f1474d5", file_Name)
+    fileName = request.args.get("fileName", "66")
+
+    IMG_Test(userId, fileName)
 
     return "Yes"
 

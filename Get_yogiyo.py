@@ -106,14 +106,9 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart):
 
     datas = Make_OrderList(UserId, UserName, OrderData,
                            cart, Menu_Data, options_fee, totals, Order_Code)
-    datas2 = Make_OrderList("Ud3e6fc3fb8d8b59735a1bf807f1474d5", UserName,
-                            OrderData, cart, Menu_Data, options_fee, totals, Order_Code)
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header, data=json.dumps(datas))
-    response2 = requests.post(url, headers=header, data=json.dumps(datas2))
     template_Test(UserId, UserName, int(totals), int(delivery_fee), Order_Code)
-    template_Test("Ud3e6fc3fb8d8b59735a1bf807f1474d5", UserName,
-                  int(totals), int(delivery_fee), Order_Code)
     Get_json = response.json()
     return Get_json
 
@@ -146,26 +141,14 @@ def IMG_Test(UserId, file_Name):
         "messages": [
             {
                 "type": "image",
-                "originalContentUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
-                "previewImageUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
-            }
-        ]
-    }
-
-    datas2 = {
-        "to": "Ud3e6fc3fb8d8b59735a1bf807f1474d5",
-        "messages": [
-            {
-                "type": "image",
-                "originalContentUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
-                "previewImageUrl": 'https://www.fastfood.p-e.kr/static/' + file_Name,
+                "originalContentUrl": file_Name,
+                "previewImageUrl": file_Name,
             }
         ]
     }
 
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header, data=json.dumps(datas))
-    response2 = requests.post(url, headers=header, data=json.dumps(datas2))
     Get_json = response.json()
     return Get_json
 
