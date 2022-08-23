@@ -4,8 +4,6 @@ from flask_cors import CORS
 import json
 import ssl
 
-from werkzeug.utils import secure_filename
-
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 CORS(app)
@@ -90,9 +88,16 @@ def pushOrder():
     delivery_fee = request.args.get("delivery_fee", "66")
     OrderData = json.loads(request.form['OrderData'])
     cart = json.loads(request.form['cart'])
-    Push_Message(userId, userName, delivery_fee, OrderData, cart)
+    code = Push_Message(userId, userName, delivery_fee, OrderData, cart)
 
-    return "Yes"
+    return code
+
+
+@app.route('/AddData', methods=['GET'])
+def AddData():
+    Code = request.args.get("Code", "66")
+
+    return Code
 
 
 @app.route('/getIMG', methods=['POST'])

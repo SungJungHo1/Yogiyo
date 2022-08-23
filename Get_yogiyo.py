@@ -110,7 +110,7 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart):
     response = requests.post(url, headers=header, data=json.dumps(datas))
     template_Test(UserId, UserName, int(totals), int(delivery_fee), Order_Code)
     Get_json = response.json()
-    return Get_json
+    return Order_Code
 
 
 def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code):
@@ -156,8 +156,9 @@ def IMG_Test(UserId, file_Name):
 if __name__ == "__main__":
 
     # delivery_fee = 3000
-    data = Push_Message("Uad859360a7e2589c8c213b3b47fc27a2",
+    data = Push_Message("U812329a68632f4237dea561c6ba1d413",
                         '크턱', 3000, orderdata, cart2)
+    print(data)
     # print(data)
     # IMG_Test("Uad859360a7e2589c8c213b3b47fc27a2")
-    get_Menu()
+    # get_Menu()
