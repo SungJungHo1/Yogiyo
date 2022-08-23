@@ -98,8 +98,10 @@ def pushOrder():
 @app.route('/getIMG', methods=['POST'])
 def getIMG():
 
-    userId = request.args.get("userId", "66")
-    fileName = request.args.get("fileName", "66")
+    # userId = request.args.get("userId", "66")
+    # fileName = request.args.get("fileName", "66")
+    userId = request.form['userIds']
+    fileName = request.form['fileNames']
 
     IMG_Test(userId, fileName)
 
