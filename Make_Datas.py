@@ -429,7 +429,7 @@ def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
         "messages": [
             {
                 "type": "flex",
-                "altText": "주문이 완료되었습니다!",
+                "altText": "ส่งคำสั่งซื้อของคุณเรียบร้อยแล้ว!",
                 "contents": {
                     "type": "carousel",
                     "contents": [
