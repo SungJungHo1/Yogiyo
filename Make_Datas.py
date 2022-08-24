@@ -12,7 +12,7 @@ def Set_Options(x):
         "contents": [
             {
                 "type": "text",
-                "text": "เมนูตัวเลือก",  # 옵션메뉴
+                "text": "옵션메뉴",  # 옵션메뉴
                 "size": "sm",
                 "color": "#1DB446"
             },
@@ -32,7 +32,7 @@ def Set_Options(x):
         "contents": [
             {
                 "type": "text",
-                "text": "ชื่อเมนูที่เลือก",  # 옵션명
+                "text": "옵션명",  # 옵션명
                 "size": "sm",
                 "color": "#1DB446"
             },
@@ -52,7 +52,7 @@ def Set_Options(x):
         "contents": [
             {
                 "type": "text",
-                "text": "ราคาที่เลือก",  # 옵션가격
+                "text": "옵션가격",  # 옵션가격
                 "size": "sm",
                 "color": "#1DB446"
             },
@@ -65,10 +65,7 @@ def Set_Options(x):
             }
         ]
     },
-        {
-        "type": "separator",
-        "margin": "lg"
-    }, ]
+    ]
 
     return datas
 
@@ -80,7 +77,7 @@ def Set_Dics(menu, i):
                 "contents": [
                     {
                         "type": "text",
-                        "text": "ชื่ออาหาร",  # 음식이름
+                        "text": "음식이름",  # 음식이름
                         "size": "sm",
                         "color": "#555555"
                     },
@@ -101,7 +98,7 @@ def Set_Dics(menu, i):
                 "contents": [
                     {
                         "type": "text",
-                        "text": "ปริมาณ",  # 수량
+                        "text": "수량",  # 수량
                         "size": "sm",
                         "color": "#555555"
                     },
@@ -120,7 +117,7 @@ def Set_Dics(menu, i):
                 "contents": [
                     {
                         "type": "text",
-                        "text": "ราคา",  # 가격
+                        "text": "가격",  # 가격
                         "size": "sm",
                         "color": "#555555"
                     },
@@ -139,7 +136,7 @@ def Set_Dics(menu, i):
                 "contents": [
                     {
                         "type": "text",
-                        "text": "ราคารวม",  # 총가격
+                        "text": "총가격",  # 총가격
                         "size": "sm",
                         "color": "#555555"
                     },
@@ -346,7 +343,7 @@ def Make_OrderList(UserId, UserName, OrderData, cart, Menu_Data, options_fee, to
                                     },
                                     {
                                         "type": "text",
-                                        "text": "ข้อมูลการสั่งซื้อ",  # 주문정보
+                                        "text": "주문정보",  # 주문정보
                                         "weight": "bold",
                                         "size": "xxl",
                                         "margin": "md"
