@@ -542,7 +542,7 @@ def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
                                                         "text": '￦ ' + format(Total_Count, ',d'),
                                                         "align": "end",
                                                         "weight": "bold",
-                                                        "color": "#1DB446"
+                                                        "color": "#1823b7"
                                                     }
                                                 ]
                                             },
