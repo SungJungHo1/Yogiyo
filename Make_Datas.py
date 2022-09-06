@@ -562,7 +562,7 @@ def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
                                                     },
                                                     {
                                                         "type": "text",
-                                                        "text": "1908-6570-1243",
+                                                        "text": "126 - 910632 - 69107",
                                                         "size": "sm",
                                                         "color": "#037bfc",
                                                         "align": "end"
@@ -581,7 +581,7 @@ def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
                                                     },
                                                     {
                                                         "type": "text",
-                                                        "text": "Toss",
+                                                        "text": "하나은행",
                                                         "size": "sm",
                                                         "color": "#037bfc",
                                                         "align": "end"
@@ -600,7 +600,7 @@ def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
                                                     },
                                                     {
                                                         "type": "text",
-                                                        "text": "FASTFOOD",
+                                                        "text": "이정희",
                                                         "size": "sm",
                                                         "color": "#037bfc",
                                                         "align": "end"

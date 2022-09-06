@@ -4,7 +4,6 @@ from Ordersdatas import *
 from Make_Datas import *
 from DBMaker import *
 from AccessToken import *
-import time
 
 
 def get_Yogiyo(category, lat, lng):
