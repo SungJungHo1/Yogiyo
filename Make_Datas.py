@@ -581,7 +581,7 @@ def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
                                                     },
                                                     {
                                                         "type": "text",
-                                                        "text": "하나은행",
+                                                        "text": "Hana Bank",
                                                         "size": "sm",
                                                         "color": "#037bfc",
                                                         "align": "end"
