@@ -562,10 +562,11 @@ def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
                                                     },
                                                     {
                                                         "type": "text",
-                                                        "text": "126 - 910632 - 69107",
+                                                        "text": "126-910632-69107",
                                                         "size": "sm",
                                                         "color": "#037bfc",
-                                                        "align": "end"
+                                                        "align": "end",
+                                                        "wrap": True
                                                     }
                                                 ]
                                             },
