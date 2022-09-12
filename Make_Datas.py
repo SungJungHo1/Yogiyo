@@ -225,7 +225,7 @@ def Make_OrderList(UserId, UserName, OrderData, cart, Menu_Data, options_fee, to
                                                     },
                                                     {
                                                         "type": "text",
-                                                        "text": OrderData['address'] + ' ' + OrderData['addressDetail'],
+                                                        "text": OrderData['address'] + ' ' + OrderData['addressDetail'] if OrderData['address'] != "" and OrderData['addressDetail'] != "" else "주문정보 입력 안됨.",
                                                         "size": "sm",
                                                         "color": "#111111",
                                                         "align": "end",
@@ -245,7 +245,7 @@ def Make_OrderList(UserId, UserName, OrderData, cart, Menu_Data, options_fee, to
                                                     },
                                                     {
                                                         "type": "text",
-                                                        "text": OrderData['firstFloorEntranceCode'],
+                                                        "text": OrderData['firstFloorEntranceCode'] if OrderData['firstFloorEntranceCode'] != "" else "주문정보 입력 안됨.",
                                                         "size": "sm",
                                                         "color": "#111111",
                                                         "align": "end",
