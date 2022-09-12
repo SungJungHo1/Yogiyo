@@ -15,7 +15,7 @@ def Insert_Data(UserName, UserId, Delivery_Fee, Order_Data, Cart):
         str(datetime.now().day) + \
         str(int(datetime.now().microsecond / 1000)) + str(z)[-1]
     mycol.insert_one({"Order_Code": Order_Code, "UserName": UserName, "UserId": UserId,
-                     "delivery_fee": Delivery_Fee, "Order_Data": Order_Data, "Cart": Cart})
+                     "delivery_fee": Delivery_Fee, "Order_Data": Order_Data, "Cart": Cart, "Order_End": True})
     return Order_Code
 
 
