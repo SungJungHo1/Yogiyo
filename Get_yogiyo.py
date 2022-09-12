@@ -4,6 +4,7 @@ from Ordersdatas import *
 from Make_Datas import *
 from DBMaker import *
 from AccessToken import *
+import time
 
 
 def get_Yogiyo(category, lat, lng):
@@ -113,6 +114,7 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart):
 
 
 def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code):
+    time.sleep(0.5)
     Line_tokens = f"Bearer {Access_Token}"
     Total_Count = Total_pay + deliver_fee + 3000
     header = {
