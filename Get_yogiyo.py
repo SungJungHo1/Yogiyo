@@ -104,12 +104,12 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart):
                 Make_dics(Menu_Data, Option_Data)
                 options_fee = options_fee + x['subOptionPrice']
 
-    datas = Make_OrderList(UserId, UserName, OrderData,
-                           cart, Menu_Data, options_fee, totals, Order_Code)
-    url = f"https://api.line.me/v2/bot/message/push"
-    response = requests.post(url, headers=header, data=json.dumps(datas))
+    # datas = Make_OrderList(UserId, UserName, OrderData,
+    #                        cart, Menu_Data, options_fee, totals, Order_Code)
+    # url = f"https://api.line.me/v2/bot/message/push"
+    # response = requests.post(url, headers=header, data=json.dumps(datas))
     template_Test(UserId, UserName, int(totals), int(delivery_fee), Order_Code)
-    Get_json = response.json()
+    # Get_json = response.json()
     return Order_Code
 
 
