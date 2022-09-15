@@ -621,6 +621,25 @@ def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
                                         "contents": [
                                             {
                                                 "type": "text",
+                                                "text": "เราขออภัยคุณลูกค้าหากมีค่าบริการเพิ่มเติมนอกเหนือจากค่าบริการจัดส่งที่แสดงขึ้นอยู่กับระยะทางในการจัดส่ง ",  # 주문코드
+                                                "size": "sm",
+                                                "color": "#037bfc",
+                                                "flex": 0,
+                                                "wrap": True
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        "type": "separator",
+                                        "margin": "xxl"
+                                    },
+                                    {
+                                        "type": "box",
+                                        "layout": "horizontal",
+                                        "margin": "md",
+                                        "contents": [
+                                            {
+                                                "type": "text",
                                                 "text": "เลขที่ใบสั่งซื้อ",  # 주문코드
                                                 "size": "xs",
                                                 "color": "#aaaaaa",
