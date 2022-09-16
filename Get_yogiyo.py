@@ -157,10 +157,11 @@ def IMG_Test(UserId, file_Name):
 if __name__ == "__main__":
 
     # delivery_fee = 3000
-    data = Push_Message("U812329a68632f4237dea561c6ba1d413",
-                        '크턱', 3000, orderdata, cart2)
+    # data = Push_Message("U812329a68632f4237dea561c6ba1d413",
+    #                     '크턱', 3000, orderdata, cart2)
     # print(data)
-    # print(get_Menu(1109037))
+    print(get_Menu(1111519))
     # print(data)
     # IMG_Test("Uad859360a7e2589c8c213b3b47fc27a2")
     # get_Menu()
+    # get_Menu(1109037)

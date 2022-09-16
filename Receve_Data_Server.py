@@ -115,6 +115,16 @@ def getIMG():
     return "Yes"
 
 
+@app.route('/LogErr', methods=['POST'])
+def LogErr():
+
+    Errors = request.form['Errors']
+
+    Insert_Err(Errors)
+
+    return "Yes"
+
+
 if __name__ == '__main__':
 
     ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
