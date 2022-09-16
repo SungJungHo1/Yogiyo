@@ -2,6 +2,7 @@ from pymongo import MongoClient
 from Ordersdatas import *
 from datetime import *
 from random import *
+from datetime import datetime, timedelta, timezone
 
 client = MongoClient('mongodb://fastfood:fastfood@43.200.202.12', 27017)
 
@@ -15,13 +16,20 @@ def Insert_Data(UserName, UserId, Delivery_Fee, Order_Data, Cart):
     Order_Code = str(datetime.now().hour) + str(datetime.now().month) + str(datetime.now().year) + \
         str(datetime.now().day) + \
         str(int(datetime.now().microsecond / 1000)) + str(z)[-1]
+
+    timezone_kst = timezone(timedelta(hours=9))
+    datetime_utc2 = datetime.now(timezone_kst)
+
     mycol.insert_one({"Order_Code": Order_Code, "UserName": UserName, "UserId": UserId,
-                     "delivery_fee": Delivery_Fee, "Order_Data": Order_Data, "Cart": Cart, "Order_End": True, 'Del_End': False, "Memo": "음식 문앞에두고 꼭 전화한번 주세요!", "Rider": ""})
+                     "delivery_fee": Delivery_Fee, "Order_Data": Order_Data, "Cart": Cart, "Order_End": True, 'Del_End': False, "Memo": "음식 문앞에두고 꼭 전화한번 주세요!", "Rider": "", "Order_Time": datetime_utc2})
     return Order_Code
 
 
 def Insert_Err(Errors):
-    errcol.insert_one({"Errors": Errors, })
+    timezone_kst = timezone(timedelta(hours=9))
+    datetime_utc2 = datetime.now(timezone_kst)
+
+    errcol.insert_one({"Errors": Errors, "Time": datetime_utc2})
 
 
 def Edit_Data(Code, Ur):
@@ -38,9 +46,9 @@ if __name__ == "__main__":
     # Drop_Users()
     # z = randrange(0,900)
     # Order_Code = str(datetime.now().hour) + str(datetime.now().month) + str(datetime.now().year) + str(datetime.now().day) + str(int(datetime.now().microsecond / 1000)) + str(z)[-1]
-    print('Order_Code')
-    # x = errcol.find()
-    # for i in x:
-    #     print(i)
+    # print('Order_Code')
+    x = errcol.find()
+    for i in x:
+        print(i)
     # Insert_Err("sdsdsdsdsds")
     # Edit_Data("1382022238380", "https://ibb.co/r22bKFs")
