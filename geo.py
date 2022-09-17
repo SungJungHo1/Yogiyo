@@ -17,7 +17,10 @@ def get_Add(lat, lng):
 
     # 요청
     res = requests.get(url, headers=headers)
-    return res.json()
+    data = res.json()
+    addrres = data['results'][0]
+    print(addrres['land'])
+    return data
 
 
 if __name__ == "__main__":

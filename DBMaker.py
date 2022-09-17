@@ -11,7 +11,7 @@ mycol = mydb['OrderDatas']
 errcol = mydb['Errors']
 
 
-def Insert_Data(UserName, UserId, Delivery_Fee, Order_Data, Cart):
+def Insert_Data(UserName, UserId, Delivery_Fee, Order_Data, Cart, lan, lng):
     z = randrange(0, 900)
     Order_Code = str(datetime.now().hour) + str(datetime.now().month) + str(datetime.now().year) + \
         str(datetime.now().day) + \
@@ -24,7 +24,7 @@ def Insert_Data(UserName, UserId, Delivery_Fee, Order_Data, Cart):
     str_datetime = datetime.strftime(datetime_utc2, format)
 
     mycol.insert_one({"Order_Code": Order_Code, "UserName": UserName, "UserId": UserId,
-                     "delivery_fee": Delivery_Fee, "Order_Data": Order_Data, "Cart": Cart, "Order_End": True, 'Del_End': False, "Memo": "음식 문앞에두고 꼭 전화한번 주세요!", "Rider": "", "Order_Time": str(str_datetime)})
+                     "delivery_fee": Delivery_Fee, "Order_Data": Order_Data, "Cart": Cart, "Order_End": True, 'Del_End': False, "Memo": "음식 문앞에두고 꼭 전화한번 주세요!", "Rider": "", "Order_Time": str(str_datetime), 'lan':  lan, 'lng': lng})
     return Order_Code
 
 

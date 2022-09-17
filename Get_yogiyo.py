@@ -76,14 +76,15 @@ def Find_User_Profile(UserId):
     return Get_json
 
 
-def Push_Message(UserId, UserName, delivery_fee, OrderData, cart):
-    Line_tokens = f"Bearer {Access_Token}"
-    header = {
-        "Authorization": Line_tokens,
-        "Content-Type": "application/json"
-    }
+def Push_Message(UserId, UserName, delivery_fee, OrderData, cart, lan, lng):
+    # Line_tokens = f"Bearer {Access_Token}"
+    # header = {
+    #     "Authorization": Line_tokens,
+    #     "Content-Type": "application/json"
+    # }
 
-    Order_Code = Insert_Data(UserName, UserId, delivery_fee, OrderData, cart)
+    Order_Code = Insert_Data(
+        UserName, UserId, delivery_fee, OrderData, cart, lan, lng)
 
     options_fee = 0
     totals = 0

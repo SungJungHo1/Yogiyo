@@ -88,9 +88,12 @@ def pushOrder():
     userId = request.args.get("userId", "66")
     userName = request.args.get("userName", "66")
     delivery_fee = request.args.get("delivery_fee", "66")
+    lan = request.args.get("lan", "66")
+    lng = request.args.get("lng", "66")
     OrderData = json.loads(request.form['OrderData'])
     cart = json.loads(request.form['cart'])
-    code = Push_Message(userId, userName, delivery_fee, OrderData, cart)
+    code = Push_Message(userId, userName, delivery_fee,
+                        OrderData, cart, lan, lng)
 
     return code
 
