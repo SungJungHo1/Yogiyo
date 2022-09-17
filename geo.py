@@ -17,8 +17,7 @@ def get_Add(lat, lng):
 
     # 요청
     res = requests.get(url, headers=headers)
-    print(res.json())
-    print(url)
+    return res.json()
 
 
 if __name__ == "__main__":

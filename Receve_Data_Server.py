@@ -132,9 +132,10 @@ def getAddres():
     lat = request.args.get("lat", "66")
     lng = request.args.get("lng", "66")
 
-    get_Add(lat, lng)
+    data = get_Add(lat, lng)
+    result = json.dumps(data, ensure_ascii=False)
 
-    return "Yes"
+    return result
 
 
 if __name__ == '__main__':
