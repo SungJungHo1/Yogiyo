@@ -53,7 +53,7 @@ if __name__ == "__main__":
     # z = randrange(0,900)
     # Order_Code = str(datetime.now().hour) + str(datetime.now().month) + str(datetime.now().year) + str(datetime.now().day) + str(int(datetime.now().microsecond / 1000)) + str(z)[-1]
     # print('Order_Code')
-    x = mycol.find()
+    x = errcol.find()
     for i in x:
         print(i)
     # Insert_Err("sdsdsdsdsds")

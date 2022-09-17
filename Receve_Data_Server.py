@@ -4,6 +4,7 @@ from flask_cors import CORS
 import json
 import ssl
 from DBMaker import *
+from geo import *
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -123,6 +124,15 @@ def LogErr():
     Insert_Err(Errors)
 
     return "Yes"
+
+
+@app.route('/getAddres', methods=['GET'])
+def LogErr():
+
+    lat = request.args.get("lat", "66")
+    lng = request.args.get("lng", "66")
+
+    get_Add(lat, lng)
 
 
 if __name__ == '__main__':
