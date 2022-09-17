@@ -127,7 +127,7 @@ def LogErr():
 
 
 @app.route('/getAddres', methods=['GET'])
-def LogErr():
+def getAddres():
 
     lat = request.args.get("lat", "66")
     lng = request.args.get("lng", "66")
