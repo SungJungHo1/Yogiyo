@@ -76,7 +76,7 @@ if __name__ == "__main__":
     # x = mycol.find()
     # for i in x:
     #     print(i)
-    Insert_cust("크턱", "010-6675-5961")
-    # print(find_cust("크턱"))
+    # Insert_cust("크턱", "010-6675-5961")
+    print(find_cust("크") == None)
     # Insert_Err("sdsdsdsdsds")
     # Edit_Data("1382022238380", "https://ibb.co/r22bKFs")
