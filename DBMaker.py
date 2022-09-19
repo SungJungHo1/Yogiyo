@@ -23,15 +23,15 @@ def Insert_Data(UserName, UserId, Delivery_Fee, Order_Data, Cart, lan, lng):
 
     format = '%Y-%m-%d %H:%M:%S'
     str_datetime = datetime.strftime(datetime_utc2, format)
-    if find_cust(UserName) == None:
-        Insert_cust(UserName, Order_Data['phone'])
+    if find_cust(UserId) == None:
+        Insert_cust(UserName, UserId, Order_Data['phone'])
     mycol.insert_one({"Order_Code": Order_Code, "UserName": UserName, "UserId": UserId,
                      "delivery_fee": Delivery_Fee, "Order_Data": Order_Data, "Cart": Cart, "Order_End": True, 'Del_End': False, "Memo": "음식 문앞에두고 꼭 전화한번 주세요!", "Rider": "", "Order_Time": str(str_datetime), 'lan':  lan, 'lng': lng})
 
     return Order_Code
 
 
-def Insert_cust(UserName, phone):
+def Insert_cust(UserName, UserId, phone):
     timezone_kst = timezone(timedelta(hours=9))
     datetime_utc2 = datetime.now(timezone_kst)
 
@@ -39,12 +39,20 @@ def Insert_cust(UserName, phone):
     str_datetime = datetime.strftime(datetime_utc2, format)
 
     mycustomer.insert_one(
-        {"UserName": UserName, "address1": "", "address2": "", "phone": phone, "memo": "", 'Start_Time': str_datetime})
+        {"UserName": UserName, 'UserId': UserId, "address1": "", "address2": "", "phone": phone, "memo": "", 'Point': "1000", 'Start_Time': str_datetime})
 
 
-def find_cust(UserName):
+def find_cust(UserId):
 
-    DBs = mycustomer.find_one({"UserName": str(UserName), })
+    DBs = mycustomer.find_one({"UserId": str(UserId), })
+    return DBs
+
+
+def find_Allcust():
+
+    DBs = mycustomer.find()
+    for i in DBs:
+        print(i)
     return DBs
 
 
@@ -64,7 +72,7 @@ def Edit_Data(Code, Ur):
 
 
 def Drop_Users():
-    mycol.drop()
+    mycustomer.drop()
 
 
 if __name__ == "__main__":
@@ -77,6 +85,7 @@ if __name__ == "__main__":
     # for i in x:
     #     print(i)
     # Insert_cust("크턱", "010-6675-5961")
-    print(find_cust("크") == None)
+    find_Allcust()
+    # Drop_Users()
     # Insert_Err("sdsdsdsdsds")
     # Edit_Data("1382022238380", "https://ibb.co/r22bKFs")
