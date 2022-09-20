@@ -109,13 +109,13 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart, lan, lng):
     #                        cart, Menu_Data, options_fee, totals, Order_Code)
     # url = f"https://api.line.me/v2/bot/message/push"
     # response = requests.post(url, headers=header, data=json.dumps(datas))
-    template_Test(UserId, UserName, int(totals), int(delivery_fee), Order_Code)
+    datas = template_Test(UserId, UserName, int(totals),
+                          int(delivery_fee), Order_Code)
     # Get_json = response.json()
-    return Order_Code
+    return datas['messages']
 
 
 def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code):
-    time.sleep(0.5)
     Line_tokens = f"Bearer {Access_Token}"
     Total_Count = Total_pay + deliver_fee + 3000
     header = {
@@ -127,7 +127,7 @@ def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code):
     url = f"https://api.line.me/v2/bot/message/push"
     response = requests.post(url, headers=header, data=json.dumps(datas))
     Get_json = response.json()
-    return Get_json
+    return datas
 
 
 def IMG_Test(UserId, file_Name):
@@ -158,10 +158,11 @@ def IMG_Test(UserId, file_Name):
 if __name__ == "__main__":
 
     # delivery_fee = 3000
-    # data = Push_Message("U812329a68632f4237dea561c6ba1d413",
-    #                     '크턱', 3000, orderdata, cart2)
+    datas = Push_Message("U812329a68632f4237dea561c6ba1d413",
+                         '크턱', 3000, orderdata, cart2, 1010100, 10101010)
+    print(datas["messages"])
     # print(data)
-    print(get_Menu(351360))
+    # print(get_Menu(351360))
     # print(data)
     # IMG_Test("Uad859360a7e2589c8c213b3b47fc27a2")
     # get_Menu()

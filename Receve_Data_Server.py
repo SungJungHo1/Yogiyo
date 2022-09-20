@@ -92,18 +92,18 @@ def pushOrder():
     lng = json.loads(request.form['lng'])
     OrderData = json.loads(request.form['OrderData'])
     cart = json.loads(request.form['cart'])
-    code = Push_Message(userId, userName, delivery_fee,
-                        OrderData, cart, lan, lng)
+    datas = Push_Message(userId, userName, delivery_fee,
+                         OrderData, cart, lan, lng)
 
-    return code
+    return datas
 
 
 @app.route('/AddData', methods=['GET'])
 def AddData():
-    Code = request.args.get("Code", "66")
+    UserId = request.args.get("UserId", "66")
     Ad_Urls = request.args.get("Ad_Urls", "66")
-    Edit_Data(Code, Ad_Urls)
-    return Code
+    Edit_Data(UserId, Ad_Urls)
+    return "yes"
 
 
 @app.route('/getIMG', methods=['POST'])

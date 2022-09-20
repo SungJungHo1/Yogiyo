@@ -66,8 +66,8 @@ def Insert_Err(Errors):
     errcol.insert_one({"Errors": Errors, "Time": str(str_datetime)})
 
 
-def Edit_Data(Code, Ur):
-    mycol.update_one({"Order_Code": str(Code)}, {
+def Edit_Data(UserId, Ur):
+    mycol.update_one({"UserId": str(UserId)}, {
                      '$set': {'Addres_Url': str(Ur)}})
 
 
@@ -81,11 +81,11 @@ if __name__ == "__main__":
     # z = randrange(0,900)
     # Order_Code = str(datetime.now().hour) + str(datetime.now().month) + str(datetime.now().year) + str(datetime.now().day) + str(int(datetime.now().microsecond / 1000)) + str(z)[-1]
     # print('Order_Code')
-    # x = mycol.find()
-    # for i in x:
-    #     print(i)
+    x = mycol.find()
+    for i in x:
+        print(i)
     # Insert_cust("크턱", "010-6675-5961")
-    find_Allcust()
+    # find_Allcust()
     # Drop_Users()
     # Insert_Err("sdsdsdsdsds")
     # Edit_Data("1382022238380", "https://ibb.co/r22bKFs")

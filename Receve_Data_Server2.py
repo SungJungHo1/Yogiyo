@@ -5,6 +5,12 @@ import json
 import ssl
 from werkzeug.utils import secure_filename
 
+from Ordersdatas import *
+from Make_Datas import *
+from DBMaker import *
+from AccessToken import *
+
+
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 CORS(app)
@@ -104,6 +110,15 @@ def getIMG():
     IMG_Test(userId, file_Name)
 
     return "Yes"
+
+
+@app.route('/Test', methods=['GET'])
+def Test():
+
+    datas = Push_Message("U812329a68632f4237dea561c6ba1d413",
+                         '크턱', 3000, orderdata, cart2, 1010100, 10101010)
+
+    return datas
 
 
 @app.route('/LogErr', methods=['POST'])
