@@ -141,6 +141,17 @@ def getAddres():
     return result
 
 
+@app.route('/find_User_Data', methods=['GET'])
+def find_User_Data():
+    User_ID = request.args.get("User_ID", "66")
+    User_Data = find_cust(User_ID)
+    if User_Data != None:
+        result = json.dumps(int(User_Data["Point"]), ensure_ascii=False)
+    else:
+        result = json.dumps(0, ensure_ascii=False)
+    return result
+
+
 if __name__ == '__main__':
 
     ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
