@@ -133,17 +133,9 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart, lan, lng):
 
 
 def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code):
-    Line_tokens = f"Bearer {Access_Token}"
     Total_Count = Total_pay + deliver_fee + 3000
-    header = {
-        "Authorization": Line_tokens,
-        "Content-Type": "application/json"
-    }
     datas = Make_DD(userId, Total_pay, deliver_fee,
                     Total_Count, UserName, Order_Code)
-    url = f"https://api.line.me/v2/bot/message/push"
-    response = requests.post(url, headers=header, data=json.dumps(datas))
-    Get_json = response.json()
     return datas
 
 
