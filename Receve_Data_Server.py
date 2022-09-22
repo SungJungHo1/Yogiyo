@@ -88,12 +88,20 @@ def pushOrder():
     userId = request.args.get("userId", "66")
     userName = request.args.get("userName", "66")
     delivery_fee = request.args.get("delivery_fee", "66")
+    ImageIn = request.args.get("ImageIn", "66")
     lan = json.loads(request.form['lan'])
     lng = json.loads(request.form['lng'])
     OrderData = json.loads(request.form['OrderData'])
     cart = json.loads(request.form['cart'])
-    datas = Push_Message(userId, userName, delivery_fee,
-                         OrderData, cart, lan, lng)
+    IMG_URL = ""
+    if ImageIn == "yes":
+
+        image = request.files['image']
+        IMG_URL = Upload_IMG(image.read())
+    datas, Order_Code = Push_Message(userId, userName, delivery_fee,
+                                     OrderData, cart, lan, lng)
+    if ImageIn == "yes":
+        Edit_Data(Order_Code, IMG_URL)
 
     return datas
 

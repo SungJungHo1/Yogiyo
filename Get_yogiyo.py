@@ -1,3 +1,5 @@
+import base64
+from importlib.metadata import files
 import requests
 import json
 from Ordersdatas import *
@@ -15,6 +17,21 @@ def get_Yogiyo(category, lat, lng):
     response = requests.get(url, headers=header)
     Get_json = response.json()
     return Get_json
+
+
+def Upload_IMG(image):
+
+    key = 'b22dba8348a705c59d025bfe148ba482'
+
+    url = "https://api.imgbb.com/1/upload"
+    payload = {
+        "key": key,
+        "image": base64.b64encode(image),
+    }
+    res = requests.post(url, payload)
+    Get_json = res.json()
+
+    return Get_json['data']["url"]
 
 
 def get_Menu(id):
@@ -112,7 +129,7 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart, lan, lng):
     datas = template_Test(UserId, UserName, int(totals),
                           int(delivery_fee), Order_Code)
     # Get_json = response.json()
-    return datas['messages']
+    return datas['messages'], Order_Code
 
 
 def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code):

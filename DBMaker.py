@@ -66,9 +66,12 @@ def Insert_Err(Errors):
     errcol.insert_one({"Errors": Errors, "Time": str(str_datetime)})
 
 
-def Edit_Data(UserId, Ur):
-    mycol.update_one({"UserId": str(UserId)}, {
-                     '$set': {'Addres_Url': str(Ur)}})
+def Edit_Data(Order_Code, Ur):
+    ttt = mycol.update_one({"Order_Code": str(Order_Code)}, {
+        '$set': {'Addres_Url': str(Ur)}})
+    print(Order_Code)
+    print(Ur)
+    print(ttt)
 
 
 def Drop_Users():
@@ -81,7 +84,7 @@ if __name__ == "__main__":
     # z = randrange(0,900)
     # Order_Code = str(datetime.now().hour) + str(datetime.now().month) + str(datetime.now().year) + str(datetime.now().day) + str(int(datetime.now().microsecond / 1000)) + str(z)[-1]
     # print('Order_Code')
-    x = mycol.find()
+    x = errcol.find()
     for i in x:
         print(i)
     # Insert_cust("크턱", "010-6675-5961")

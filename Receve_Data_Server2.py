@@ -1,3 +1,4 @@
+from email.mime import image
 from flask import Flask, request
 from Get_yogiyo import *
 from flask_cors import CORS
@@ -16,7 +17,7 @@ app.config['JSON_AS_ASCII'] = False
 CORS(app)
 
 
-@app.route('/getStores')
+@app.route('/getStores', methods=['POST'])
 def getStores():
     category = request.args.get("category", "1인분주문")
     latitude = request.args.get("latitude", "37.5347556106622")
@@ -93,11 +94,23 @@ def pushOrder():
     userId = request.args.get("userId", "66")
     userName = request.args.get("userName", "66")
     delivery_fee = request.args.get("delivery_fee", "66")
+    ImageIn = request.args.get("ImageIn", "66")
+    lan = json.loads(request.form['lan'])
+    lng = json.loads(request.form['lng'])
     OrderData = json.loads(request.form['OrderData'])
     cart = json.loads(request.form['cart'])
-    Push_Message(userId, userName, delivery_fee, OrderData, cart)
+    IMG_URL = ""
+    if ImageIn == "yes":
 
-    return "Yes"
+        image = request.files['image']
+
+        IMG_URL = Upload_IMG(image.read())
+    datas, Order_Code = Push_Message(userId, userName, delivery_fee,
+                                     OrderData, cart, lan, lng)
+    if ImageIn == "yes":
+        Edit_Data(Order_Code, IMG_URL)
+
+    return datas
 
 
 @app.route('/getIMG', methods=['POST'])
