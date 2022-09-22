@@ -69,9 +69,6 @@ def Insert_Err(Errors):
 def Edit_Data(Order_Code, Ur):
     ttt = mycol.update_one({"Order_Code": str(Order_Code)}, {
         '$set': {'Addres_Url': str(Ur)}})
-    print(Order_Code)
-    print(Ur)
-    print(ttt)
 
 
 def Drop_Users():
