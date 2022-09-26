@@ -133,16 +133,16 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart, lan, lng, Serv
 
 
 def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code, Service_Money):
-    Line_tokens = f"Bearer {Access_Token}"
-    header = {
-        "Authorization": Line_tokens,
-        "Content-Type": "application/json"
-    }
-    url = f"https://api.line.me/v2/bot/message/push"
+    # Line_tokens = f"Bearer {Access_Token}"
+    # header = {
+    #     "Authorization": Line_tokens,
+    #     "Content-Type": "application/json"
+    # }
+    # url = f"https://api.line.me/v2/bot/message/push"
     Total_Count = Total_pay + deliver_fee + int(Service_Money)
     datas = Make_DD(userId, Total_pay, deliver_fee,
                     Total_Count, UserName, Order_Code, int(Service_Money))
-    response = requests.post(url, headers=header, data=json.dumps(datas))
+    # response = requests.post(url, headers=header, data=json.dumps(datas))
     return datas
 
 
