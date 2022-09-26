@@ -423,7 +423,7 @@ def Make_OrderList(UserId, UserName, OrderData, cart, Menu_Data, options_fee, to
     return datas
 
 
-def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
+def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code, Service_Money):
     datas = {
         "to": userId,
         "messages": [
@@ -517,7 +517,7 @@ def Make_DD(userId, Total_pay, deliver_fee, Total_Count, UserName, Order_Code):
                                                     },
                                                     {
                                                         "type": "text",
-                                                        "text": "3,000 ￦",
+                                                        "text": f"{format(Service_Money, ',d')} ￦",
                                                         "size": "sm",
                                                         "color": "#111111",
                                                         "align": "end"

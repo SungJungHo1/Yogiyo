@@ -94,6 +94,7 @@ def pushOrder():
     userId = request.args.get("userId", "66")
     userName = request.args.get("userName", "66")
     delivery_fee = request.args.get("delivery_fee", "66")
+    Service_Money = request.args.get("Service_Money", "66")
     ImageIn = request.args.get("ImageIn", "66")
     lan = json.loads(request.form['lan'])
     lng = json.loads(request.form['lng'])
@@ -106,7 +107,7 @@ def pushOrder():
 
         IMG_URL = Upload_IMG(image.read())
     datas, Order_Code = Push_Message(userId, userName, delivery_fee,
-                                     OrderData, cart, lan, lng)
+                                     OrderData, cart, lan, lng, Service_Money)
     if ImageIn == "yes":
         Edit_Data(Order_Code, IMG_URL)
 
@@ -123,6 +124,13 @@ def getIMG():
     IMG_Test(userId, file_Name)
 
     return "Yes"
+
+
+@app.route('/service')
+def Get_service():
+    data = find_service()
+
+    return str(data)
 
 
 @app.route('/Test', methods=['GET'])

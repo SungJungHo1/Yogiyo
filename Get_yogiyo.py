@@ -93,7 +93,7 @@ def Find_User_Profile(UserId):
     return Get_json
 
 
-def Push_Message(UserId, UserName, delivery_fee, OrderData, cart, lan, lng):
+def Push_Message(UserId, UserName, delivery_fee, OrderData, cart, lan, lng, Service_Money):
     # Line_tokens = f"Bearer {Access_Token}"
     # header = {
     #     "Authorization": Line_tokens,
@@ -101,7 +101,7 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart, lan, lng):
     # }
 
     Order_Code = Insert_Data(
-        UserName, UserId, delivery_fee, OrderData, cart, lan, lng)
+        UserName, UserId, delivery_fee, OrderData, cart, lan, lng, Service_Money)
 
     options_fee = 0
     totals = 0
@@ -127,15 +127,22 @@ def Push_Message(UserId, UserName, delivery_fee, OrderData, cart, lan, lng):
     # url = f"https://api.line.me/v2/bot/message/push"
     # response = requests.post(url, headers=header, data=json.dumps(datas))
     datas = template_Test(UserId, UserName, int(totals),
-                          int(delivery_fee), Order_Code)
+                          int(delivery_fee), Order_Code, Service_Money)
     # Get_json = response.json()
     return datas['messages'], Order_Code
 
 
-def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code):
-    Total_Count = Total_pay + deliver_fee + 3000
+def template_Test(userId, UserName, Total_pay, deliver_fee, Order_Code, Service_Money):
+    Line_tokens = f"Bearer {Access_Token}"
+    header = {
+        "Authorization": Line_tokens,
+        "Content-Type": "application/json"
+    }
+    url = f"https://api.line.me/v2/bot/message/push"
+    Total_Count = Total_pay + deliver_fee + int(Service_Money)
     datas = Make_DD(userId, Total_pay, deliver_fee,
-                    Total_Count, UserName, Order_Code)
+                    Total_Count, UserName, Order_Code, int(Service_Money))
+    response = requests.post(url, headers=header, data=json.dumps(datas))
     return datas
 
 
